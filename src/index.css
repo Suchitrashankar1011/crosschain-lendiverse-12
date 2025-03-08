@@ -103,16 +103,33 @@
 
   html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
   }
 }
 
 /* Animation classes */
+.network-card,
+.feature-card,
+.step-card,
+.cta-card {
+  @apply opacity-0 transform transition-all duration-700 ease-out;
+}
+
+.network-card,
+.feature-card,
+.step-card {
+  @apply translate-x-20;
+}
+
+.cta-card {
+  @apply translate-y-10;
+}
+
 .network-card.visible,
 .feature-card.visible,
 .step-card.visible,
 .cta-card.visible {
-  opacity: 1;
-  transform: translateY(0);
+  @apply opacity-100 translate-x-0 translate-y-0;
 }
 
 /* Gradient text animations */
@@ -130,6 +147,7 @@
 /* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 10px;
+  height: 10px;
 }
 
 ::-webkit-scrollbar-track {
@@ -143,4 +161,83 @@
 
 ::-webkit-scrollbar-thumb:hover {
   background: #8B5CF6;
+}
+
+/* Horizontal scroll styles */
+.snap-x {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.snap-x::-webkit-scrollbar {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .snap-x {
+    scroll-snap-type: x mandatory;
+  }
+  
+  .snap-start {
+    scroll-snap-align: start;
+  }
+}
+
+/* Modern animation effects */
+.slide-in-right {
+  animation: slideInRight 0.7s ease-out forwards;
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.7s ease-out forwards;
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Transition for navbar */
+#main-navbar {
+  transition: all 0.3s ease-in-out;
+}
+
+/* Section transition states */
+.section-enter {
+  opacity: 0;
+  transform: translateX(50px);
+}
+
+.section-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 500ms, transform 500ms;
+}
+
+.section-exit {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.section-exit-active {
+  opacity: 0;
+  transform: translateX(-50px);
+  transition: opacity 500ms, transform 500ms;
 }

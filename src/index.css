@@ -167,7 +167,7 @@ html {
 }
 
 .light .bg-glass {
-  @apply bg-white/90 shadow-lg border border-indigo-300;
+  @apply bg-white/90 shadow-lg border-2 border-indigo-300;
 }
 
 /* Hero card styles */
@@ -180,7 +180,7 @@ html {
 }
 
 .light .hero-card {
-  @apply bg-white border border-indigo-300 shadow-md;
+  @apply bg-white border-2 border-indigo-300 shadow-md;
 }
 
 /* Custom gradient backgrounds */
@@ -198,7 +198,7 @@ html {
 
 /* Feature card styles */
 .feature-container {
-  @apply border rounded-xl transition-all duration-300;
+  @apply border-2 rounded-xl transition-all duration-300;
 }
 
 .dark .feature-container {
@@ -206,7 +206,7 @@ html {
 }
 
 .light .feature-container {
-  @apply bg-white border border-indigo-300 shadow-md;
+  @apply bg-white border-indigo-300 shadow-md;
 }
 
 /* Footer styling */
@@ -219,7 +219,7 @@ html {
 }
 
 .light .footer {
-  @apply bg-white border-t border-gray-300 shadow-sm;
+  @apply bg-white border-t-2 border-gray-300 shadow-sm;
 }
 
 /* Hero section card gradients */
@@ -241,7 +241,7 @@ html {
 }
 
 .light .content-container {
-  @apply bg-white border-2 border-indigo-200 shadow-md;
+  @apply bg-white border-2 border-indigo-300 shadow-md;
 }
 
 .accent-box {
@@ -253,7 +253,7 @@ html {
 }
 
 .light .accent-box {
-  @apply bg-gradient-to-br from-blue-100 to-white border border-blue-200 shadow-sm;
+  @apply bg-gradient-to-br from-blue-100 to-white border-2 border-blue-300 shadow-sm;
 }
 
 /* Card hover effects */
@@ -270,20 +270,20 @@ html {
 }
 
 .light .hover-card:hover {
-  @apply shadow-blue-400/20;
+  @apply shadow-blue-400/30;
 }
 
 /* Light mode specific styles */
 .light .feature-card {
-  @apply border-2 border-indigo-200 bg-white shadow hover:shadow-md;
+  @apply border-2 border-indigo-300 bg-white shadow hover:shadow-md;
 }
 
 .light .network-card {
-  @apply border-2 border-indigo-200 bg-white shadow-md;
+  @apply border-2 border-indigo-300 bg-white shadow-md;
 }
 
 .light .step-card {
-  @apply border-2 border-indigo-200 bg-white shadow;
+  @apply border-2 border-indigo-300 bg-white shadow;
 }
 
 /* Reduced spacing for sections */
@@ -293,32 +293,32 @@ html {
 
 /* Light mode accent colors for cards */
 .light .accent-card-blue {
-  @apply bg-blue-50 border-2 border-blue-200;
+  @apply bg-blue-50 border-2 border-blue-300;
 }
 
 .light .accent-card-purple {
-  @apply bg-purple-50 border-2 border-purple-200;
+  @apply bg-purple-50 border-2 border-purple-300;
 }
 
 .light .accent-card-green {
-  @apply bg-green-50 border-2 border-green-200;
+  @apply bg-green-50 border-2 border-green-300;
 }
 
 .light .accent-card-yellow {
-  @apply bg-yellow-50 border-2 border-yellow-200;
+  @apply bg-yellow-50 border-2 border-yellow-300;
 }
 
 .light .accent-card-pink {
-  @apply bg-pink-50 border-2 border-pink-200;
+  @apply bg-pink-50 border-2 border-pink-300;
 }
 
 /* Enhanced container styles for light mode */
 .light .container-feature {
-  @apply bg-gradient-to-r from-white to-gray-50 border-2 border-indigo-200 shadow-md;
+  @apply bg-gradient-to-r from-white to-gray-50 border-2 border-indigo-300 shadow-md;
 }
 
 .light .enhanced-container {
-  @apply bg-white border-2 border-indigo-200 shadow-md;
+  @apply bg-white border-2 border-indigo-300 shadow-md;
 }
 
 /* Light mode background styling */
@@ -328,7 +328,7 @@ html {
 
 /* Light mode container outlines */
 .light .outline-container {
-  @apply border-2 border-gray-300 shadow-sm;
+  @apply border-2 border-indigo-300 shadow-sm;
 }
 
 /* Add contrasting colors for different sections in light mode */
@@ -350,9 +350,61 @@ html {
 }
 
 .light .inner-container {
-  @apply border-2 border-indigo-200 bg-white shadow-sm;
+  @apply border-2 border-indigo-300 bg-white shadow-sm;
 }
 
 .dark .inner-container {
   @apply border border-lending-border bg-lending-card shadow-md;
+}
+
+/* First diagram inner containers */
+.diagram-container {
+  @apply transition-all duration-300 hover:shadow-lg;
+}
+
+.light .diagram-container {
+  @apply bg-white border-2 border-indigo-300 rounded-lg shadow-sm hover:border-indigo-400;
+}
+
+.dark .diagram-container {
+  @apply bg-lending-card border border-lending-border rounded-lg shadow-md;
+}
+
+/* Additional hover effects for all cards */
+.hover-effect {
+  @apply transition-all duration-300;
+}
+
+.hover-effect:hover {
+  @apply transform scale-105 shadow-md;
+}
+
+.light .hover-effect:hover {
+  @apply shadow-indigo-300/50;
+}
+
+.dark .hover-effect:hover {
+  @apply shadow-lending-primary/30;
+}
+
+/* Animation for containers */
+.animate-on-scroll {
+  @apply opacity-0 transform translate-y-4 transition-all duration-500;
+}
+
+.animate-on-scroll.visible {
+  @apply opacity-100 translate-y-0;
+}
+
+/* Inner elements for the first diagram */
+.inner-element {
+  @apply rounded-md p-3 transition-all duration-300;
+}
+
+.light .inner-element {
+  @apply bg-blue-50 border-2 border-blue-200 hover:bg-blue-100 hover:border-blue-300;
+}
+
+.dark .inner-element {
+  @apply bg-lending-card/70 border border-lending-border hover:bg-lending-card hover:border-lending-primary/30;
 }

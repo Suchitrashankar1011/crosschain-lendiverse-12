@@ -108,7 +108,7 @@ const Features = () => {
   }, []);
 
   return (
-    <div id="features" ref={sectionRef} className="py-20 dark:bg-gradient-to-b dark:from-lending-dark dark:to-lending-darker light:bg-gradient-to-b light:from-white light:to-indigo-50 min-h-screen flex items-center transition-colors duration-300">
+    <div id="features" ref={sectionRef} className="py-20 dark:bg-gradient-to-b dark:from-lending-dark dark:to-lending-darker light:bg-gradient-to-b light:from-gray-100 light:to-indigo-100 min-h-screen flex items-center transition-colors duration-300">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-5xl font-bold mb-6 dark:text-white light:text-gray-800 animate-fade-in-up">
@@ -131,7 +131,7 @@ const Features = () => {
                 style={{ transitionDelay: `${index * 100}ms` }}
               >
                 <CardContent className="p-6">
-                  <div className={`inline-flex items-center justify-center p-4 rounded-full mb-5 bg-gradient-to-br dark:from-lending-primary/20 dark:to-lending-primary/10 light:bg-white light:border-2 light:${colorClasses.border}`}>
+                  <div className={`inline-flex items-center justify-center p-4 rounded-full mb-5 bg-gradient-to-br dark:from-lending-primary/20 dark:to-lending-primary/10 light:bg-indigo-50 light:border-2 light:${colorClasses.border}`}>
                     <feature.icon className={`h-7 w-7 dark:text-lending-primary light:${colorClasses.icon}`} />
                   </div>
                   <h3 className="text-xl font-semibold mb-3 dark:text-white light:text-gray-800">{feature.title}</h3>
@@ -143,7 +143,7 @@ const Features = () => {
         </div>
 
         <div className="mt-16 grid grid-cols-1 lg:grid-cols-3 gap-8">
-          <div className="col-span-1 lg:col-span-2 reimagine-container dark:bg-lending-card/80 light:bg-indigo-100 rounded-xl overflow-hidden shadow-lg border-2 dark:border-lending-border/50 light:border-indigo-300 hover:border-indigo-400 transition-all duration-300 hover:-translate-y-1">
+          <div className="col-span-1 lg:col-span-2 reimagine-container dark:bg-lending-card/80 light:bg-gray-200/80 rounded-xl overflow-hidden shadow-lg border-2 dark:border-lending-border/50 light:border-indigo-300 hover:border-indigo-400 transition-all duration-300 hover:-translate-y-1">
             <div className="p-6 md:p-8">
               <h3 className="text-2xl font-semibold mb-4 dark:text-white light:text-gray-800">Reimagine Finance</h3>
               <p className="dark:text-gray-300 light:text-gray-600 mb-4">
@@ -165,7 +165,7 @@ const Features = () => {
               </div>
             </div>
           </div>
-          <div className="simple-process-container dark:bg-lending-card/80 light:bg-purple-100 rounded-xl overflow-hidden shadow-lg border-2 dark:border-lending-border/50 light:border-indigo-300 hover:border-indigo-400 transition-all duration-300 hover:-translate-y-1">
+          <div className="simple-process-container dark:bg-lending-card/80 light:bg-gray-200/80 rounded-xl overflow-hidden shadow-lg border-2 dark:border-lending-border/50 light:border-indigo-300 hover:border-indigo-400 transition-all duration-300 hover:-translate-y-1">
             <div className="p-6">
               <h3 className="text-2xl font-semibold mb-4 dark:text-white light:text-gray-800">Simple Process</h3>
               <div className="space-y-4">

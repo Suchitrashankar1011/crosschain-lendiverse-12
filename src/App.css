@@ -1,3 +1,4 @@
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -39,4 +40,18 @@
 
 .read-the-docs {
   color: #888;
+}
+
+/* Dark container background for modern look */
+.dark-container {
+  background-color: rgba(45, 45, 48, 0.8);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.light-dark-container {
+  background-color: rgba(240, 240, 245, 0.85);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }

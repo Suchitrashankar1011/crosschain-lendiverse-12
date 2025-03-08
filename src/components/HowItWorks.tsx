@@ -70,7 +70,7 @@ const HowItWorks = () => {
   }, []);
 
   return (
-    <div id="how-it-works" ref={sectionRef} className="py-20 bg-gradient-to-r dark:from-lending-dark dark:to-lending-primary/40 light:from-indigo-50 light:to-blue-50 transition-colors duration-300 min-h-screen flex items-center">
+    <div id="how-it-works" ref={sectionRef} className="py-20 bg-gradient-to-r dark:from-lending-dark dark:to-lending-primary/40 light:from-gray-100 light:to-indigo-100 transition-colors duration-300 min-h-screen flex items-center">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold mb-4 animate-fade-in-up">

@@ -193,7 +193,7 @@ html {
 }
 
 .light .gradient-primary {
-  @apply from-lending-primary/80 to-lending-secondary/80;
+  @apply from-lending-primary/90 to-lending-secondary/90;
 }
 
 /* Feature card styles */
@@ -220,4 +220,55 @@ html {
 
 .light .footer {
   @apply bg-gray-50 border-gray-200;
+}
+
+/* Hero section card gradients */
+.card-gradient-dark {
+  @apply bg-gradient-to-br from-lending-card to-lending-darker;
+}
+
+.card-gradient-light {
+  @apply bg-gradient-to-br from-white to-gray-100;
+}
+
+/* New styled container classes */
+.content-container {
+  @apply rounded-xl p-6 transition-all duration-300;
+}
+
+.dark .content-container {
+  @apply bg-lending-card/90 border border-lending-border/50 shadow-md;
+}
+
+.light .content-container {
+  @apply bg-white border border-gray-200 shadow-md;
+}
+
+.accent-box {
+  @apply rounded-lg p-4 transition-all duration-300;
+}
+
+.dark .accent-box {
+  @apply bg-gradient-to-br from-lending-primary/10 to-transparent border border-lending-primary/20;
+}
+
+.light .accent-box {
+  @apply bg-gradient-to-br from-lending-primary/5 to-white border border-lending-primary/10;
+}
+
+/* Card hover effects */
+.hover-card {
+  @apply transition-all duration-300;
+}
+
+.hover-card:hover {
+  @apply transform -translate-y-1;
+}
+
+.dark .hover-card:hover {
+  @apply shadow-lending-primary/20;
+}
+
+.light .hover-card:hover {
+  @apply shadow-lending-primary/10;
 }

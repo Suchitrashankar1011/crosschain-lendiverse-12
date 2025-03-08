@@ -16,6 +16,10 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
     const storedTheme = localStorage.getItem('theme') as 'light' | 'dark' | null;
     if (storedTheme) {
       setTheme(storedTheme);
+      document.documentElement.classList.remove('light', 'dark');
+      document.documentElement.classList.add(storedTheme);
+    } else {
+      document.documentElement.classList.add('dark');
     }
   }, []);
 

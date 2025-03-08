@@ -28,17 +28,17 @@ const CTA = () => {
   }, []);
 
   return (
-    <div className="py-20 bg-lending-dark dark:bg-lending-dark light:bg-white" ref={sectionRef}>
+    <div className="py-20 bg-background" ref={sectionRef}>
       <div className="container mx-auto px-6">
-        <div className="cta-card bg-lending-card dark:bg-lending-card light:bg-white light:shadow-md rounded-2xl shadow-xl overflow-hidden border border-lending-border dark:border-lending-border light:border-gray-200 opacity-0 transform translate-y-10 transition-all duration-700">
+        <div className="cta-card bg-card rounded-2xl shadow-xl overflow-hidden border border-border opacity-0 transform translate-y-10 transition-all duration-700">
           <div className="grid grid-cols-1 md:grid-cols-2">
             <div className="p-8 md:p-12">
-              <h2 className="text-3xl font-bold mb-4 text-white dark:text-white light:text-lending-dark">Ready to Start?</h2>
-              <p className="text-gray-300 dark:text-gray-300 light:text-gray-600 mb-6">
-                Join LenDiverse today and experience the future of decentralized finance with our cross-chain lending platform.
+              <h2 className="text-3xl font-bold mb-4 text-foreground">Ready to Start?</h2>
+              <p className="text-muted-foreground mb-6">
+                Experience the future of decentralized finance with our cross-chain lending platform.
               </p>
               <Button 
-                className="bg-gradient-to-r from-lending-primary to-lending-secondary hover:opacity-90 text-white flex items-center gap-2 px-6 py-6 transition-all duration-300 hover:translate-x-1"
+                className="bg-gradient-to-r from-[var(--lending-primary)] to-[var(--lending-secondary)] hover:opacity-90 text-white flex items-center gap-2 px-6 py-6 transition-all duration-300 hover:translate-x-1"
                 onClick={() => {
                   toast({
                     title: "Coming Soon",
@@ -50,7 +50,7 @@ const CTA = () => {
                 <ArrowRight className="h-4 w-4" />
               </Button>
             </div>
-            <div className="bg-gradient-to-r from-lending-primary to-lending-accent hidden md:block relative overflow-hidden">
+            <div className="bg-gradient-to-r from-[var(--lending-primary)] to-[var(--lending-accent)] hidden md:block relative overflow-hidden">
               <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMTAwIDEwMGMwLTUwIDUwLTUwIDUwIDBzLTUwIDUwLTUwIDB6IiBmaWxsPSJyZ2JhKDI1NSwgMjU1LCAyNTUsIDAuMSkiIGZpbGwtcnVsZT0iZXZlbm9kZCIvPjwvc3ZnPg==')] opacity-20 animate-bg-shift"></div>
               <div className="h-full p-12 flex items-center justify-center relative z-10">
                 <div className="text-white">

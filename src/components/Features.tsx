@@ -67,10 +67,10 @@ const Features = () => {
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold mb-4 animate-fade-in-up">
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-lending-primary to-lending-secondary animate-bg-shift">Reimagine Finance</span>
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-[var(--lending-primary)] to-[var(--lending-secondary)] animate-bg-shift">Reimagine Finance</span>
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
-            A revolutionary platform bridging the gap between blockchain ecosystems
+            Revolutionary platform bridging blockchain ecosystems
           </p>
         </div>
         

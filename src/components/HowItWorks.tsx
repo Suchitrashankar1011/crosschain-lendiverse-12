@@ -66,16 +66,13 @@ const HowItWorks = () => {
   }, []);
 
   return (
-    <div id="how-it-works" ref={sectionRef} className="py-20 bg-gradient-to-r from-lending-dark to-lending-primary/40 text-white min-h-screen flex items-center">
+    <div id="how-it-works" ref={sectionRef} className="py-20 bg-gradient-to-r from-lending-dark to-lending-primary/40 dark:from-lending-dark dark:to-lending-primary/40 light:from-white light:to-lending-primary/10 text-white dark:text-white light:text-lending-dark min-h-screen flex items-center">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
-          <div className="inline-block px-3 py-1 rounded-full text-sm font-medium bg-lending-accent/20 text-lending-accent mb-4 animate-fade-in">
-            Process
-          </div>
-          <h2 className="text-4xl font-bold mb-4 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-            How <span className="bg-clip-text text-transparent bg-gradient-to-r from-lending-accent to-lending-primary animate-bg-shift">LenDiverse</span> Works
+          <h2 className="text-4xl font-bold mb-4 animate-fade-in-up">
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-lending-accent to-lending-primary animate-bg-shift">How It Works</span>
           </h2>
-          <p className="max-w-2xl mx-auto text-gray-300 animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
+          <p className="max-w-2xl mx-auto text-gray-300 dark:text-gray-300 light:text-gray-600 animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
             Our platform makes cross-chain lending and borrowing simple and secure through these easy steps.
           </p>
         </div>
@@ -87,21 +84,21 @@ const HowItWorks = () => {
               className="relative"
             >
               <div 
-                className="step-card backdrop-blur-md rounded-xl p-6 border border-white/10 bg-glass h-full hover:border-lending-primary/50 transition-all duration-500 opacity-0 transform translate-y-10"
+                className="step-card backdrop-blur-md rounded-xl p-6 border border-white/10 dark:bg-glass dark:border-white/10 light:bg-white light:border-gray-200 light:shadow-md h-full hover:border-lending-primary/50 transition-all duration-500 opacity-0 transform translate-y-10"
                 style={{ transitionDelay: `${index * 150}ms` }}
               >
-                <div className="inline-flex items-center justify-center p-3 bg-white/10 rounded-lg mb-4">
+                <div className="inline-flex items-center justify-center p-3 bg-white/10 dark:bg-white/10 light:bg-lending-primary/10 rounded-lg mb-4">
                   <step.icon className="h-6 w-6" />
                 </div>
                 <div className="absolute -top-4 -left-4 w-8 h-8 bg-lending-primary/80 rounded-full flex items-center justify-center text-white font-bold z-10">
                   {index + 1}
                 </div>
                 <h3 className="text-xl font-semibold mb-2">{step.title}</h3>
-                <p className="text-gray-300">{step.description}</p>
+                <p className="text-gray-300 dark:text-gray-300 light:text-gray-600">{step.description}</p>
               </div>
               {index < steps.length - 1 && (
                 <div className="step-arrow hidden lg:block absolute top-1/2 -right-4 transform translate-x-8 -translate-y-1/2 z-10 opacity-0 transition-all duration-1000">
-                  <ArrowRight className="h-8 w-8 text-white/50" />
+                  <ArrowRight className="h-8 w-8 text-white/50 dark:text-white/50 light:text-lending-dark/50" />
                 </div>
               )}
             </div>

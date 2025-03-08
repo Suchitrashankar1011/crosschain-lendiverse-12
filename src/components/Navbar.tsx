@@ -8,6 +8,7 @@ import {
   X
 } from 'lucide-react';
 import { toast } from "@/hooks/use-toast";
+import ThemeToggle from './ThemeToggle';
 
 // Type definition for window with ethereum
 declare global {
@@ -95,7 +96,7 @@ const Navbar = () => {
 
   return (
     <nav className={`py-4 px-6 md:px-10 w-full border-b transition-all duration-300 backdrop-blur-md fixed top-0 z-50 ${
-      scrolled ? 'bg-lending-dark/90 border-lending-primary/20 shadow-lg' : 'bg-lending-dark/70 border-lending-border'
+      scrolled ? 'bg-lending-dark/90 dark:bg-lending-dark/90 light:bg-white/90 border-lending-primary/20 shadow-lg' : 'bg-lending-dark/70 dark:bg-lending-dark/70 light:bg-white/70 border-lending-border'
     }`}>
       <div className="container mx-auto flex justify-between items-center">
         <div className="flex items-center">
@@ -109,21 +110,21 @@ const Navbar = () => {
         <div className="hidden md:flex items-center space-x-6">
           <button 
             onClick={() => scrollToSection('features')} 
-            className="text-gray-300 hover:text-lending-primary transition-all duration-300 relative group"
+            className="text-gray-300 dark:text-gray-300 light:text-lending-dark hover:text-lending-primary transition-all duration-300 relative group"
           >
             Features
             <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-lending-primary transition-all duration-300 group-hover:w-full"></span>
           </button>
           <button 
             onClick={() => scrollToSection('networks')} 
-            className="text-gray-300 hover:text-lending-primary transition-all duration-300 relative group"
+            className="text-gray-300 dark:text-gray-300 light:text-lending-dark hover:text-lending-primary transition-all duration-300 relative group"
           >
             Networks
             <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-lending-primary transition-all duration-300 group-hover:w-full"></span>
           </button>
           <button 
             onClick={() => scrollToSection('how-it-works')} 
-            className="text-gray-300 hover:text-lending-primary transition-all duration-300 relative group"
+            className="text-gray-300 dark:text-gray-300 light:text-lending-dark hover:text-lending-primary transition-all duration-300 relative group"
           >
             How It Works
             <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-lending-primary transition-all duration-300 group-hover:w-full"></span>
@@ -131,13 +132,15 @@ const Navbar = () => {
         </div>
         
         <div className="flex items-center space-x-4">
+          <ThemeToggle />
+          
           {isConnected ? (
             <Button 
               variant="outline" 
               className="flex items-center gap-2 border-lending-border bg-lending-card hover:bg-lending-primary/20 transition-all duration-300"
             >
               <Wallet className="h-4 w-4 text-lending-primary" />
-              <span className="hidden sm:inline text-white">{truncateAddress(walletAddress)}</span>
+              <span className="hidden sm:inline text-white dark:text-white light:text-lending-dark">{truncateAddress(walletAddress)}</span>
             </Button>
           ) : (
             <Button 
@@ -146,7 +149,7 @@ const Navbar = () => {
               onClick={connectWallet}
             >
               <Wallet className="h-4 w-4 text-lending-primary" />
-              <span className="hidden sm:inline text-white">Connect Wallet</span>
+              <span className="hidden sm:inline text-white dark:text-white light:text-lending-dark">Connect</span>
             </Button>
           )}
           
@@ -165,7 +168,7 @@ const Navbar = () => {
           
           <Button 
             variant="ghost" 
-            className="md:hidden text-white hover:bg-lending-primary/20" 
+            className="md:hidden text-white dark:text-white light:text-lending-dark hover:bg-lending-primary/20" 
             size="icon"
             onClick={toggleMenu}
           >
@@ -176,23 +179,23 @@ const Navbar = () => {
       
       {/* Mobile Menu */}
       {isMenuOpen && (
-        <div className="md:hidden absolute left-0 right-0 top-[72px] bg-lending-dark/95 backdrop-blur-lg border-b border-lending-border animate-slide-in-bottom">
+        <div className="md:hidden absolute left-0 right-0 top-[72px] bg-lending-dark/95 dark:bg-lending-dark/95 light:bg-white/95 backdrop-blur-lg border-b border-lending-border animate-slide-in-bottom">
           <div className="flex flex-col p-4 space-y-4">
             <button 
               onClick={() => scrollToSection('features')}
-              className="text-gray-300 hover:text-lending-primary transition-colors py-2 px-4 text-left"
+              className="text-gray-300 dark:text-gray-300 light:text-lending-dark hover:text-lending-primary transition-colors py-2 px-4 text-left"
             >
               Features
             </button>
             <button 
               onClick={() => scrollToSection('networks')}
-              className="text-gray-300 hover:text-lending-primary transition-colors py-2 px-4 text-left"
+              className="text-gray-300 dark:text-gray-300 light:text-lending-dark hover:text-lending-primary transition-colors py-2 px-4 text-left"
             >
               Networks
             </button>
             <button 
               onClick={() => scrollToSection('how-it-works')}
-              className="text-gray-300 hover:text-lending-primary transition-colors py-2 px-4 text-left"
+              className="text-gray-300 dark:text-gray-300 light:text-lending-dark hover:text-lending-primary transition-colors py-2 px-4 text-left"
             >
               How It Works
             </button>

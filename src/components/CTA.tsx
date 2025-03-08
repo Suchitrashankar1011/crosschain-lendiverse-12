@@ -28,17 +28,17 @@ const CTA = () => {
   }, []);
 
   return (
-    <div className="py-20 bg-lending-dark dark:bg-lending-dark light:bg-white" ref={sectionRef}>
+    <div className="py-20 transition-colors duration-300 dark:bg-lending-dark light:bg-white" ref={sectionRef}>
       <div className="container mx-auto px-6">
-        <div className="cta-card bg-lending-card dark:bg-lending-card light:bg-white light:shadow-md rounded-2xl shadow-xl overflow-hidden border border-lending-border dark:border-lending-border light:border-gray-200 opacity-0 transform translate-y-10 transition-all duration-700">
+        <div className="cta-card feature-container opacity-0 transform translate-y-10 transition-all duration-700 rounded-2xl overflow-hidden">
           <div className="grid grid-cols-1 md:grid-cols-2">
             <div className="p-8 md:p-12">
-              <h2 className="text-3xl font-bold mb-4 text-white dark:text-white light:text-lending-dark">Ready to Start?</h2>
-              <p className="text-gray-300 dark:text-gray-300 light:text-gray-600 mb-6">
-                Join LenDiverse today and experience the future of decentralized finance with our cross-chain lending platform.
+              <h2 className="text-3xl font-bold mb-4 text-theme-heading">Ready to Start?</h2>
+              <p className="text-theme-body mb-6">
+                Join LenDiverse today and experience the future of borderless finance.
               </p>
               <Button 
-                className="bg-gradient-to-r from-lending-primary to-lending-secondary hover:opacity-90 text-white flex items-center gap-2 px-6 py-6 transition-all duration-300 hover:translate-x-1"
+                className="gradient-primary hover:opacity-90 text-white flex items-center gap-2 px-6 py-6 transition-all duration-300 hover:translate-x-1"
                 onClick={() => {
                   toast({
                     title: "Coming Soon",

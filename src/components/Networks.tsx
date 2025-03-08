@@ -1,46 +1,46 @@
 
 import React, { useEffect, useRef } from 'react';
-import { Check } from 'lucide-react';
+import { Check, Zap } from 'lucide-react';
 
 const networks = [
   {
     name: 'Base',
     logo: '/optimism.svg', 
     color: '#0EA5E9',
-    features: ['Low fees', 'Fast transactions', 'Secure environment']
+    features: ['Low fees', 'Fast transfers', 'Secure environment']
   },
   {
     name: 'Optimism',
     logo: '/optimism.svg',
     color: '#FF0420',
-    features: ['Ethereum security', 'Optimistic rollups', 'Lower gas costs']
+    features: ['Ethereum security', 'Fast scaling', 'Lower gas costs']
   },
   {
     name: 'Arbitrum',
     logo: '/arbitrum.svg',
     color: '#28A0F0',
-    features: ['High throughput', 'EVM compatibility', 'Minimal latency']
+    features: ['High throughput', 'EVM compatible', 'Minimal latency']
   }
 ];
 
 const NetworkCard = ({ network, index }: { network: typeof networks[0], index: number }) => {
   return (
     <div 
-      className="network-card bg-lending-card dark:bg-lending-card light:bg-white light:shadow-md rounded-xl shadow-lg overflow-hidden border border-lending-border dark:border-lending-border light:border-gray-200 hover:border-lending-primary/50 hover:shadow-lending-primary/20 transition-all duration-500 opacity-0 transform translate-y-10"
+      className="network-card bg-glass rounded-xl overflow-hidden hover:border-lending-primary/50 hover:shadow-lending-primary/20 transition-all duration-500 opacity-0 transform translate-y-10"
       style={{ transitionDelay: `${index * 150}ms` }}
     >
       <div className="p-6">
         <div className="flex items-center space-x-4 mb-4">
           <div className="w-10 h-10 rounded-full bg-gradient-to-r from-lending-primary/20 to-lending-secondary/20 flex items-center justify-center">
-            <span className="font-semibold text-sm" style={{ color: network.color }}>{network.name.substring(0, 1)}</span>
+            <Zap className="h-5 w-5" style={{ color: network.color }} />
           </div>
-          <h3 className="text-xl font-semibold text-white dark:text-white light:text-lending-dark">{network.name}</h3>
+          <h3 className="text-xl font-semibold text-theme-heading">{network.name}</h3>
         </div>
         <ul className="space-y-2">
           {network.features.map((feature, idx) => (
             <li key={idx} className="flex items-center">
               <Check className="h-4 w-4 text-lending-accent mr-2" />
-              <span className="text-gray-300 dark:text-gray-300 light:text-gray-600">{feature}</span>
+              <span className="text-theme-body">{feature}</span>
             </li>
           ))}
         </ul>
@@ -89,14 +89,16 @@ const Networks = () => {
   }, []);
 
   return (
-    <div id="networks" ref={sectionRef} className="py-20 bg-lending-darker dark:bg-lending-darker light:bg-gray-50 min-h-screen flex items-center">
+    <div id="networks" ref={sectionRef} className="py-20 dark:bg-lending-darker light:bg-gray-50 min-h-screen flex items-center transition-colors duration-300">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold mb-4 text-white dark:text-white light:text-lending-dark animate-fade-in-up">
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-lending-secondary to-lending-accent animate-bg-shift">Networks</span>
+          <h2 className="text-4xl font-bold mb-4 text-theme-heading animate-fade-in-up">
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-lending-secondary to-lending-accent animate-bg-shift">
+              Supported Chains
+            </span>
           </h2>
-          <p className="text-gray-300 dark:text-gray-300 light:text-gray-600 max-w-2xl mx-auto animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
-            LenDiverse currently supports these Ethereum Layer 2 networks, with more coming soon.
+          <p className="text-theme-body max-w-2xl mx-auto animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
+            Connecting ecosystems for unprecedented financial flexibility
           </p>
         </div>
         

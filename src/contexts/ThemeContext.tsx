@@ -16,14 +16,22 @@ export const ThemeProvider = ({ children }: { children: ReactNode }) => {
     const storedTheme = localStorage.getItem('theme') as 'light' | 'dark' | null;
     if (storedTheme) {
       setTheme(storedTheme);
+    } else {
+      // Check for user preference
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      setTheme(prefersDark ? 'dark' : 'light');
     }
   }, []);
 
   // Apply theme class to document element
   useEffect(() => {
-    document.documentElement.classList.remove('light', 'dark');
-    document.documentElement.classList.add(theme);
+    const root = document.documentElement;
+    root.classList.remove('light', 'dark');
+    root.classList.add(theme);
     localStorage.setItem('theme', theme);
+    
+    // Add data-theme attribute for components that use it
+    root.setAttribute('data-theme', theme);
   }, [theme]);
 
   const toggleTheme = () => {

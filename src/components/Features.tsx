@@ -45,23 +45,27 @@ const features = [
 
 const Features = () => {
   return (
-    <div id="features" className="py-16 bg-gray-50">
+    <div id="features" className="py-20 bg-lending-dark">
       <div className="container mx-auto px-6">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold mb-4">Why Choose LenDiverse?</h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">
+        <div className="text-center mb-16 animate-fade-in-up">
+          <h2 className="text-3xl font-bold mb-4 text-white">Why Choose LenDiverse?</h2>
+          <p className="text-gray-300 max-w-2xl mx-auto">
             Our platform offers unique advantages for DeFi users looking to maximize their lending and borrowing capabilities.
           </p>
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {features.map((feature, index) => (
-            <div key={index} className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow border border-gray-100">
-              <div className="inline-flex items-center justify-center p-3 bg-lending-secondary/10 text-lending-secondary rounded-lg mb-4">
+            <div 
+              key={index} 
+              className="bg-lending-card p-6 rounded-xl shadow-lg hover:shadow-lending-primary/20 transition-all duration-300 border border-lending-border hover:border-lending-primary/50 animate-fade-in-up"
+              style={{ animationDelay: `${index * 0.1}s` }}
+            >
+              <div className="inline-flex items-center justify-center p-3 bg-lending-primary/10 text-lending-primary rounded-lg mb-4">
                 <feature.icon className="h-6 w-6" />
               </div>
-              <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
-              <p className="text-gray-600">{feature.description}</p>
+              <h3 className="text-xl font-semibold mb-2 text-white">{feature.title}</h3>
+              <p className="text-gray-300">{feature.description}</p>
             </div>
           ))}
         </div>

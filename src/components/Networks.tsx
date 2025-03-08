@@ -26,7 +26,7 @@ const networks = [
 const NetworkCard = ({ network, index }: { network: typeof networks[0], index: number }) => {
   return (
     <div 
-      className="network-card bg-glass rounded-xl overflow-hidden hover:border-lending-primary/50 hover:shadow-lending-primary/20 transition-all duration-500 opacity-0 transform translate-y-10"
+      className="network-card rounded-xl overflow-hidden dark:border-lending-border light:border-gray-200 light:bg-white/90 light:shadow-md dark:bg-lending-card/70 backdrop-blur-md border hover:border-lending-primary/50 hover:shadow-lending-primary/20 transition-all duration-500 opacity-0 transform translate-y-10"
       style={{ transitionDelay: `${index * 150}ms` }}
     >
       <div className="p-6">
@@ -34,13 +34,13 @@ const NetworkCard = ({ network, index }: { network: typeof networks[0], index: n
           <div className="w-10 h-10 rounded-full bg-gradient-to-r from-lending-primary/20 to-lending-secondary/20 flex items-center justify-center">
             <Zap className="h-5 w-5" style={{ color: network.color }} />
           </div>
-          <h3 className="text-xl font-semibold text-theme-heading">{network.name}</h3>
+          <h3 className="text-xl font-semibold dark:text-white light:text-gray-800">{network.name}</h3>
         </div>
         <ul className="space-y-2">
           {network.features.map((feature, idx) => (
             <li key={idx} className="flex items-center">
               <Check className="h-4 w-4 text-lending-accent mr-2" />
-              <span className="text-theme-body">{feature}</span>
+              <span className="dark:text-gray-300 light:text-gray-600">{feature}</span>
             </li>
           ))}
         </ul>
@@ -89,15 +89,15 @@ const Networks = () => {
   }, []);
 
   return (
-    <div id="networks" ref={sectionRef} className="py-20 dark:bg-lending-darker light:bg-gray-50 min-h-screen flex items-center transition-colors duration-300">
+    <div id="networks" ref={sectionRef} className="py-20 dark:bg-lending-darker light:bg-gray-100 min-h-screen flex items-center transition-colors duration-300">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold mb-4 text-theme-heading animate-fade-in-up">
+          <h2 className="text-4xl font-bold mb-4 dark:text-white light:text-gray-800 animate-fade-in-up">
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-lending-secondary to-lending-accent animate-bg-shift">
               Supported Chains
             </span>
           </h2>
-          <p className="text-theme-body max-w-2xl mx-auto animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
+          <p className="dark:text-gray-300 light:text-gray-600 max-w-2xl mx-auto animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
             Connecting ecosystems for unprecedented financial flexibility
           </p>
         </div>

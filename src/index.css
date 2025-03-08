@@ -196,31 +196,6 @@ html {
   @apply from-lending-primary/80 to-lending-secondary/80;
 }
 
-/* Dynamic theme text colors */
-.text-theme-heading {
-  @apply transition-colors;
-}
-
-.dark .text-theme-heading {
-  @apply text-white;
-}
-
-.light .text-theme-heading {
-  @apply text-lending-dark;
-}
-
-.text-theme-body {
-  @apply transition-colors;
-}
-
-.dark .text-theme-body {
-  @apply text-gray-300;
-}
-
-.light .text-theme-body {
-  @apply text-gray-600;
-}
-
 /* Feature card styles */
 .feature-container {
   @apply border rounded-xl transition-all duration-300;

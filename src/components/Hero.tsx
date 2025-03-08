@@ -1,10 +1,34 @@
 
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Coins, Zap, BarChart3 } from 'lucide-react';
+import { ArrowRight, Coins, Zap, BarChart3, ArrowUpRight } from 'lucide-react';
 import { toast } from "@/hooks/use-toast";
 
 const Hero = () => {
+  const heroRef = useRef<HTMLDivElement>(null);
+  
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      if (!heroRef.current) return;
+      
+      const elements = heroRef.current.querySelectorAll('.parallax-element');
+      
+      elements.forEach((el) => {
+        const speed = parseFloat((el as HTMLElement).dataset.speed || '0.05');
+        const x = (window.innerWidth / 2 - e.pageX) * speed;
+        const y = (window.innerHeight / 2 - e.pageY) * speed;
+        
+        (el as HTMLElement).style.transform = `translateX(${x}px) translateY(${y}px)`;
+      });
+    };
+    
+    window.addEventListener('mousemove', handleMouseMove);
+    
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+    };
+  }, []);
+
   const scrollToFeatures = () => {
     const featuresSection = document.getElementById('features');
     if (featuresSection) {
@@ -16,12 +40,27 @@ const Hero = () => {
   };
 
   return (
-    <div className="pt-20 pb-12 md:pt-32 md:pb-24 min-h-screen flex items-center transition-colors duration-300 dark:bg-lending-darker light:bg-gray-50 relative overflow-hidden">
+    <div ref={heroRef} className="pt-20 pb-12 md:pt-32 md:pb-24 min-h-screen flex items-center transition-colors duration-300 dark:bg-lending-darker light:bg-gray-50 relative overflow-hidden">
       {/* Animated background elements */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
         <div className="absolute top-10 left-10 w-72 h-72 bg-lending-primary/10 rounded-full filter blur-3xl animate-pulse-slow"></div>
         <div className="absolute bottom-10 right-10 w-80 h-80 bg-lending-accent/10 rounded-full filter blur-3xl animate-pulse-slow" style={{ animationDelay: '2s' }}></div>
         <div className="absolute top-1/3 right-1/4 w-64 h-64 bg-lending-secondary/10 rounded-full filter blur-3xl animate-pulse-slow" style={{ animationDelay: '1s' }}></div>
+        
+        {/* Added geometric decoration elements */}
+        <div className="absolute top-20 right-10 w-16 h-16 border-2 border-lending-primary/30 rounded-lg parallax-element animate-float" data-speed="0.03" style={{ animationDelay: '0.5s' }}></div>
+        <div className="absolute bottom-20 left-10 w-20 h-20 border-2 border-lending-secondary/30 rounded-full parallax-element animate-float" data-speed="0.05" style={{ animationDelay: '1.2s' }}></div>
+        
+        {/* Added circuit-like graphics */}
+        <div className="absolute top-1/4 left-1/3 w-32 h-1 bg-lending-primary/20 rounded parallax-element" data-speed="0.02"></div>
+        <div className="absolute top-1/4 left-1/3 w-1 h-32 bg-lending-primary/20 rounded parallax-element" data-speed="0.02"></div>
+        <div className="absolute bottom-1/4 right-1/3 w-32 h-1 bg-lending-secondary/20 rounded parallax-element" data-speed="0.04"></div>
+        <div className="absolute bottom-1/4 right-1/3 w-1 h-32 bg-lending-secondary/20 rounded parallax-element" data-speed="0.04"></div>
+        
+        {/* Floating dots */}
+        <div className="absolute top-24 left-1/3 w-2 h-2 bg-lending-primary rounded-full parallax-element animate-pulse-slow" data-speed="0.07"></div>
+        <div className="absolute top-1/2 right-24 w-3 h-3 bg-lending-secondary rounded-full parallax-element animate-pulse-slow" data-speed="0.06" style={{ animationDelay: '0.7s' }}></div>
+        <div className="absolute bottom-32 left-1/4 w-2 h-2 bg-lending-accent rounded-full parallax-element animate-pulse-slow" data-speed="0.08" style={{ animationDelay: '1.4s' }}></div>
       </div>
       
       <div className="container mx-auto px-6 flex flex-col md:flex-row items-center relative z-10">
@@ -44,7 +83,7 @@ const Hero = () => {
           
           <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 pt-4 animate-fade-in-up" style={{ animationDelay: '0.9s' }}>
             <Button 
-              className="gradient-primary hover:opacity-90 transition-all duration-300 text-white flex items-center gap-2 px-6 py-6 hover:translate-x-1 shadow-lg"
+              className="gradient-primary hover:opacity-90 transition-all duration-300 text-white flex items-center gap-2 px-6 py-6 hover:translate-x-1 shadow-lg hover-glow"
               onClick={() => {
                 toast({
                   title: "Coming Soon",
@@ -90,17 +129,35 @@ const Hero = () => {
         <div className="hidden md:block md:w-1/2 mt-10 md:mt-0 animate-float">
           <div className="relative rounded-xl overflow-hidden shadow-2xl animate-fade-in-up" style={{ animationDelay: '0.8s' }}>
             <div className="absolute inset-0 dark:bg-hero-dark light:bg-gradient-to-br light:from-white light:to-lending-primary/20 opacity-90 transition-colors duration-300"></div>
+            
+            {/* Animated platform diagram */}
+            <div className="absolute inset-0 z-0 overflow-hidden">
+              <div className="absolute top-1/4 left-0 w-full h-px bg-lending-primary/30 animate-pulse-slow"></div>
+              <div className="absolute top-1/2 left-0 w-full h-px bg-lending-secondary/30 animate-pulse-slow" style={{ animationDelay: '1s' }}></div>
+              <div className="absolute top-3/4 left-0 w-full h-px bg-lending-accent/30 animate-pulse-slow" style={{ animationDelay: '2s' }}></div>
+              
+              <div className="absolute left-1/4 top-0 w-px h-full bg-lending-primary/30 animate-pulse-slow"></div>
+              <div className="absolute left-1/2 top-0 w-px h-full bg-lending-secondary/30 animate-pulse-slow" style={{ animationDelay: '1.5s' }}></div>
+              <div className="absolute left-3/4 top-0 w-px h-full bg-lending-accent/30 animate-pulse-slow" style={{ animationDelay: '2.5s' }}></div>
+            </div>
+            
             <div className="relative p-8 z-10">
               <div className="grid grid-cols-2 gap-4">
-                <div className="dark:bg-glass light:bg-white p-4 rounded-lg dark:border dark:border-lending-primary/30 light:border-2 light:border-indigo-300 light:hover:border-indigo-500 transition-all duration-300 hover:scale-105 shadow-md hover:shadow-lg">
-                  <h3 className="font-semibold mb-1 dark:text-white light:text-gray-800">Deposit on Optimism</h3>
+                <div className="dark:bg-glass light:bg-white/90 p-4 rounded-lg dark:border dark:border-lending-primary/30 light:border-2 light:border-indigo-300 light:hover:border-indigo-500 transition-all duration-300 hover:scale-105 shadow-md hover:shadow-lg">
+                  <div className="flex justify-between items-center">
+                    <h3 className="font-semibold mb-1 dark:text-white light:text-gray-800">Deposit on Optimism</h3>
+                    <ArrowUpRight className="h-4 w-4 text-lending-primary" />
+                  </div>
                   <p className="text-sm dark:text-gray-300 light:text-gray-600">Secure 5.2% APY</p>
                 </div>
-                <div className="dark:bg-glass light:bg-white p-4 rounded-lg dark:border dark:border-lending-primary/30 light:border-2 light:border-indigo-300 light:hover:border-indigo-500 transition-all duration-300 hover:scale-105 shadow-md hover:shadow-lg">
-                  <h3 className="font-semibold mb-1 dark:text-white light:text-gray-800">Borrow on Base</h3>
+                <div className="dark:bg-glass light:bg-white/90 p-4 rounded-lg dark:border dark:border-lending-primary/30 light:border-2 light:border-indigo-300 light:hover:border-indigo-500 transition-all duration-300 hover:scale-105 shadow-md hover:shadow-lg">
+                  <div className="flex justify-between items-center">
+                    <h3 className="font-semibold mb-1 dark:text-white light:text-gray-800">Borrow on Base</h3>
+                    <ArrowUpRight className="h-4 w-4 text-lending-secondary" />
+                  </div>
                   <p className="text-sm dark:text-gray-300 light:text-gray-600">Only 3.1% Interest</p>
                 </div>
-                <div className="dark:bg-glass light:bg-white p-4 rounded-lg col-span-2 dark:border dark:border-lending-primary/30 light:border-2 light:border-indigo-300 light:hover:border-indigo-500 transition-all duration-300 hover:scale-105 shadow-md hover:shadow-lg">
+                <div className="dark:bg-glass light:bg-white/90 p-4 rounded-lg col-span-2 dark:border dark:border-lending-primary/30 light:border-2 light:border-indigo-300 light:hover:border-indigo-500 transition-all duration-300 hover:scale-105 shadow-md hover:shadow-lg">
                   <div className="flex justify-between items-center">
                     <div>
                       <h3 className="font-semibold dark:text-white light:text-gray-800">Cross-Chain Transfer</h3>

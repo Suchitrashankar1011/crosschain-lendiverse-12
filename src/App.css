@@ -156,3 +156,170 @@
 .light .hover-glow:hover {
   box-shadow: 0 0 15px rgba(99, 102, 241, 0.4);
 }
+
+/* New animation for path drawing */
+@keyframes path-draw {
+  from { stroke-dashoffset: 1000; }
+  to { stroke-dashoffset: 0; }
+}
+
+.animated-path {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+}
+
+.animated-path.path-reveal {
+  animation: path-draw 2s ease-out forwards;
+}
+
+/* Graphics animation */
+@keyframes line-draw {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes line-draw-vertical {
+  from { height: 0; }
+  to { height: 100%; }
+}
+
+.graphic-line {
+  opacity: 0;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.graphic-line.vertical {
+  transform: scaleY(0);
+  transform-origin: top;
+}
+
+.graphic-line.line-visible {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+.graphic-line.vertical.line-visible {
+  transform: scaleY(1);
+}
+
+/* Dot animation */
+@keyframes dot-appear {
+  0% { transform: scale(0); opacity: 0; }
+  70% { transform: scale(1.1); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.graphic-dot {
+  opacity: 0;
+  transform: scale(0);
+  transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.graphic-dot.dot-visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Glow effect for graphics */
+@keyframes glow-pulse {
+  0% { filter: drop-shadow(0 0 3px rgba(139, 92, 246, 0.3)); }
+  50% { filter: drop-shadow(0 0 8px rgba(139, 92, 246, 0.5)); }
+  100% { filter: drop-shadow(0 0 3px rgba(139, 92, 246, 0.3)); }
+}
+
+.glow-active {
+  animation: glow-pulse 3s infinite;
+}
+
+/* Circuit board graphics styling */
+.circuit-line {
+  opacity: 0.6;
+  transition: all 0.3s ease;
+}
+
+.circuit-line:hover, .circuit-dot:hover {
+  opacity: 1;
+  filter: drop-shadow(0 0 3px rgba(139, 92, 246, 0.5));
+}
+
+.circuit-dot {
+  opacity: 0.7;
+  transition: all 0.3s ease;
+}
+
+/* Animated children elements */
+.animated-child {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.animated-child-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Staggered animation delays */
+.delay-100 { transition-delay: 100ms; }
+.delay-200 { transition-delay: 200ms; }
+.delay-300 { transition-delay: 300ms; }
+.delay-400 { transition-delay: 400ms; }
+.delay-500 { transition-delay: 500ms; }
+
+/* Mouse parallax effect */
+.mouse-parallax {
+  transition: transform 0.1s ease-out;
+  will-change: transform;
+}
+
+/* New styled geometric patterns */
+.geo-pattern {
+  position: absolute;
+  opacity: 0.4;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.dark .geo-pattern {
+  stroke: rgba(139, 92, 246, 0.3);
+  fill: none;
+}
+
+.light .geo-pattern {
+  stroke: rgba(99, 102, 241, 0.3);
+  fill: none;
+}
+
+/* New modern UI card styles */
+.modern-card {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, box-shadow;
+}
+
+.modern-card:hover {
+  transform: translateY(-6px) scale(1.01);
+}
+
+.dark .modern-card {
+  background: rgba(30, 30, 35, 0.8);
+  border: 1px solid rgba(139, 92, 246, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.dark .modern-card:hover {
+  box-shadow: 0 12px 48px rgba(139, 92, 246, 0.2);
+  border: 1px solid rgba(139, 92, 246, 0.3);
+}
+
+.light .modern-card {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(99, 102, 241, 0.2);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.light .modern-card:hover {
+  box-shadow: 0 12px 32px rgba(99, 102, 241, 0.15);
+  border: 1px solid rgba(99, 102, 241, 0.3);
+}

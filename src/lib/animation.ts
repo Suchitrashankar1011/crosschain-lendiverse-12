@@ -1,4 +1,3 @@
-
 export const setupIntersectionObservers = () => {
   // Observer for feature cards with enhanced animation
   const featureObserver = new IntersectionObserver(
@@ -10,6 +9,11 @@ export const setupIntersectionObservers = () => {
           
           // Add extra animation class for enhanced effect
           entry.target.classList.add('animate-scale-in');
+          
+          // Add glow effect for certain elements
+          if (entry.target.classList.contains('glow-on-visible')) {
+            entry.target.classList.add('glow-active');
+          }
         }
       });
     },
@@ -28,24 +32,67 @@ export const setupIntersectionObservers = () => {
               el.classList.add('animate-scale-in');
             }, index * 150);
           });
+          
+          // Find and animate path elements for SVG graphics
+          const pathElements = entry.target.querySelectorAll('.animated-path');
+          pathElements.forEach((path, index) => {
+            setTimeout(() => {
+              path.classList.add('path-reveal');
+            }, index * 200);
+          });
         }
       });
     },
     { threshold: 0.1 }
   );
 
-  // New observer for parallax scrolling effect
+  // Enhanced observer for parallax scrolling effect
   const parallaxObserver = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add('parallax-active');
+          
+          // Trigger animation for children elements
+          const animatedChildren = entry.target.querySelectorAll('.animated-child');
+          animatedChildren.forEach((child, index) => {
+            setTimeout(() => {
+              child.classList.add('animated-child-visible');
+            }, index * 120);
+          });
         } else {
           entry.target.classList.remove('parallax-active');
         }
       });
     },
     { threshold: 0.1, rootMargin: "0px 0px -10% 0px" }
+  );
+  
+  // New observer for floating graphic elements
+  const graphicsObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('graphics-visible');
+          
+          // Animate lines and dots separately with delays
+          const lines = entry.target.querySelectorAll('.graphic-line');
+          lines.forEach((line, index) => {
+            setTimeout(() => {
+              line.classList.add('line-visible');
+            }, index * 200);
+          });
+          
+          const dots = entry.target.querySelectorAll('.graphic-dot');
+          dots.forEach((dot, index) => {
+            setTimeout(() => {
+              dot.classList.add('dot-visible');
+            }, index * 150 + 300);
+          });
+        }
+      });
+    },
+    { threshold: 0.1 }
   );
 
   // Apply to feature cards with improved selection
@@ -65,6 +112,12 @@ export const setupIntersectionObservers = () => {
   parallaxElements.forEach((element) => {
     parallaxObserver.observe(element);
   });
+  
+  // Apply to graphic elements
+  const graphicElements = document.querySelectorAll('.animated-graphic');
+  graphicElements.forEach((element) => {
+    graphicsObserver.observe(element);
+  });
 
   return () => {
     featureCards.forEach((card) => {
@@ -75,6 +128,9 @@ export const setupIntersectionObservers = () => {
     });
     parallaxElements.forEach((element) => {
       parallaxObserver.unobserve(element);
+    });
+    graphicElements.forEach((element) => {
+      graphicsObserver.unobserve(element);
     });
   };
 };
@@ -89,7 +145,7 @@ export const scrollToSection = (id: string) => {
   }
 };
 
-// Enhanced parallax scroll handler
+// Enhanced parallax scroll handler with improved movement
 const handleParallaxScroll = (e: WheelEvent) => {
   const deltaY = e.deltaY;
   const deltaX = e.deltaX;
@@ -114,7 +170,27 @@ const handleParallaxScroll = (e: WheelEvent) => {
   return { deltaY, deltaX };
 };
 
-// Add smooth scroll function for enhanced experience
+// Add mouse move parallax effect for enhanced visuals
+export const setupMouseParallax = () => {
+  const handleMouseMove = (e: MouseEvent) => {
+    const parallaxElements = document.querySelectorAll('.mouse-parallax');
+    
+    parallaxElements.forEach((element) => {
+      const speed = parseFloat((element as HTMLElement).dataset.speed || '0.05');
+      const x = (window.innerWidth / 2 - e.clientX) * speed;
+      const y = (window.innerHeight / 2 - e.clientY) * speed;
+      
+      (element as HTMLElement).style.transform = `translate(${x}px, ${y}px)`;
+    });
+  };
+  
+  window.addEventListener('mousemove', handleMouseMove);
+  
+  return () => {
+    window.removeEventListener('mousemove', handleMouseMove);
+  };
+};
+
 export const smoothScrollTo = (element: HTMLElement, duration = 1000) => {
   const targetPosition = element.getBoundingClientRect().top + window.pageYOffset;
   const startPosition = window.pageYOffset;
@@ -137,6 +213,25 @@ export const smoothScrollTo = (element: HTMLElement, duration = 1000) => {
   }
 
   requestAnimationFrame(animation);
+};
+
+// Add new path animation function
+export const animateSvgPaths = (svgElement: SVGElement) => {
+  const paths = svgElement.querySelectorAll('path');
+  
+  paths.forEach((path, index) => {
+    const length = path.getTotalLength();
+    
+    // Set up the starting position
+    path.style.strokeDasharray = length.toString();
+    path.style.strokeDashoffset = length.toString();
+    
+    // Trigger the animation
+    setTimeout(() => {
+      path.style.transition = 'stroke-dashoffset 1.5s ease-in-out';
+      path.style.strokeDashoffset = '0';
+    }, index * 300);
+  });
 };
 
 export { handleParallaxScroll };

@@ -1,7 +1,7 @@
 
 import React, { useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Coins, Zap, BarChart3, ArrowUpRight } from 'lucide-react';
+import { ArrowRight, Coins, Zap, BarChart3, ArrowUpRight, CircuitBoard, Network, Layers } from 'lucide-react';
 import { toast } from "@/hooks/use-toast";
 
 const Hero = () => {
@@ -65,9 +65,30 @@ const Hero = () => {
       
       <div className="container mx-auto px-6 flex flex-col md:flex-row items-center relative z-10">
         <div className="flex flex-col space-y-6 md:w-1/2 md:pr-10 animate-fade-in-right">
-          <div className="inline-flex items-center px-4 py-2 rounded-full dark:bg-lending-primary/20 light:bg-indigo-100 border dark:border-lending-primary/30 light:border-indigo-300 mb-4 animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
-            <Zap className="h-4 w-4 mr-2 text-lending-primary" />
-            <span className="text-sm font-medium dark:text-white light:text-gray-800">Next generation DeFi platform</span>
+          {/* Modern circuit board graphic element replacing the previous bar */}
+          <div className="mb-6 relative animate-fade-in-up">
+            <div className="absolute inset-0 bg-gradient-to-r from-lending-primary/20 to-lending-secondary/20 rounded-xl blur-md"></div>
+            <div className="relative dark:bg-lending-dark/80 light:bg-white/80 backdrop-blur-sm rounded-xl p-6 border dark:border-lending-primary/30 light:border-indigo-300 shadow-xl flex items-center gap-5">
+              <div className="relative">
+                <CircuitBoard className="h-10 w-10 text-lending-primary animate-pulse-slow" />
+                <div className="absolute -top-1 -right-1 w-3 h-3 bg-lending-secondary rounded-full animate-ping"></div>
+              </div>
+              <div className="grid grid-flow-col gap-3">
+                <Network className="h-6 w-6 text-lending-accent animate-float" style={{ animationDelay: '0.3s' }} />
+                <Layers className="h-6 w-6 text-lending-secondary animate-float" style={{ animationDelay: '0.6s' }} />
+                <Zap className="h-6 w-6 text-lending-primary animate-float" style={{ animationDelay: '0.9s' }} />
+              </div>
+              <div className="flex-1 flex justify-end">
+                <div className="w-24 h-6 relative overflow-hidden rounded-md">
+                  <div className="absolute inset-0 bg-gradient-to-r from-lending-primary to-lending-accent"></div>
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="w-full h-0.5 bg-white/50 rounded">
+                      <div className="h-full w-2/3 bg-white rounded animate-pulse-slow"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
           
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight animate-fade-in-up" style={{ animationDelay: '0.5s' }}>

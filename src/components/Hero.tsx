@@ -5,8 +5,18 @@ import { ArrowRight, Coins } from 'lucide-react';
 import { toast } from "@/hooks/use-toast";
 
 const Hero = () => {
+  const scrollToFeatures = () => {
+    const featuresSection = document.getElementById('features');
+    if (featuresSection) {
+      window.scrollTo({
+        top: featuresSection.offsetTop - 80,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   return (
-    <div className="pt-28 pb-16 md:pt-40 md:pb-32 bg-lending-darker">
+    <div className="pt-28 pb-16 md:pt-40 md:pb-32 bg-lending-darker min-h-screen flex items-center">
       <div className="container mx-auto px-6 flex flex-col md:flex-row items-center">
         <div className="flex flex-col space-y-6 md:w-1/2 md:pr-10 animate-fade-in-right">
           <div className="inline-block px-3 py-1 rounded-full text-sm font-medium bg-lending-primary/20 text-lending-primary mb-2">
@@ -14,7 +24,7 @@ const Hero = () => {
           </div>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
             <span className="text-white">Borrow & Lend</span><br />
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-lending-primary via-lending-secondary to-lending-accent">
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-lending-primary via-lending-secondary to-lending-accent animate-bg-shift">
               Across Blockchains
             </span>
           </h1>
@@ -24,7 +34,7 @@ const Hero = () => {
           </p>
           <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 pt-4">
             <Button 
-              className="bg-gradient-to-r from-lending-primary to-lending-secondary hover:opacity-90 transition-all duration-300 text-white flex items-center gap-2 px-6 py-6"
+              className="bg-gradient-to-r from-lending-primary to-lending-secondary hover:opacity-90 transition-all duration-300 text-white flex items-center gap-2 px-6 py-6 hover:translate-x-1"
               onClick={() => {
                 toast({
                   title: "Coming Soon",
@@ -38,9 +48,7 @@ const Hero = () => {
             <Button 
               variant="outline" 
               className="flex items-center gap-2 px-6 py-6 border-lending-border bg-lending-dark/60 text-white hover:bg-lending-primary/20 transition-all duration-300"
-              onClick={() => {
-                document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' });
-              }}
+              onClick={scrollToFeatures}
             >
               <Coins className="h-4 w-4 text-lending-primary" />
               Learn More
@@ -52,15 +60,15 @@ const Hero = () => {
             <div className="absolute inset-0 bg-hero-dark opacity-90"></div>
             <div className="relative p-8 text-white z-10">
               <div className="grid grid-cols-2 gap-4">
-                <div className="backdrop-blur-md p-4 rounded-lg border border-white/10 bg-glass hover:border-lending-primary/50 transition-all duration-300">
+                <div className="backdrop-blur-md p-4 rounded-lg border border-white/10 bg-glass hover:border-lending-primary/50 transition-all duration-300 hover:scale-105">
                   <h3 className="font-semibold mb-1">Deposit on Optimism</h3>
                   <p className="text-sm opacity-90">Secure 5.2% APY</p>
                 </div>
-                <div className="backdrop-blur-md p-4 rounded-lg border border-white/10 bg-glass hover:border-lending-primary/50 transition-all duration-300">
+                <div className="backdrop-blur-md p-4 rounded-lg border border-white/10 bg-glass hover:border-lending-primary/50 transition-all duration-300 hover:scale-105">
                   <h3 className="font-semibold mb-1">Borrow on Base</h3>
                   <p className="text-sm opacity-90">Only 3.1% Interest</p>
                 </div>
-                <div className="backdrop-blur-md p-4 rounded-lg border border-white/10 bg-glass col-span-2 hover:border-lending-primary/50 transition-all duration-300">
+                <div className="backdrop-blur-md p-4 rounded-lg border border-white/10 bg-glass col-span-2 hover:border-lending-primary/50 transition-all duration-300 hover:scale-105">
                   <div className="flex justify-between items-center">
                     <div>
                       <h3 className="font-semibold">Cross-Chain Transfer</h3>

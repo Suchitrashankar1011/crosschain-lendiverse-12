@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { 
   Wallet, 
@@ -9,10 +9,33 @@ import {
 } from 'lucide-react';
 import { toast } from "@/hooks/use-toast";
 
+// Type definition for window with ethereum
+declare global {
+  interface Window {
+    ethereum?: any;
+  }
+}
+
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isConnected, setIsConnected] = useState(false);
   const [walletAddress, setWalletAddress] = useState('');
+  const [scrolled, setScrolled] = useState(false);
+
+  // Handle scroll event to change navbar appearance
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      if (scrollPosition > 50) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -50,12 +73,30 @@ const Navbar = () => {
     }
   };
 
-  const truncateAddress = (address) => {
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      // Close menu if open
+      if (isMenuOpen) {
+        setIsMenuOpen(false);
+      }
+      
+      // Scroll to section with smooth behavior
+      window.scrollTo({
+        top: element.offsetTop - 80, // Account for navbar height
+        behavior: 'smooth'
+      });
+    }
+  };
+
+  const truncateAddress = (address: string) => {
     return `${address.slice(0, 6)}...${address.slice(-4)}`;
   };
 
   return (
-    <nav className="py-4 px-6 md:px-10 w-full border-b border-lending-border bg-lending-dark/70 backdrop-blur-md fixed top-0 z-50">
+    <nav className={`py-4 px-6 md:px-10 w-full border-b transition-all duration-300 backdrop-blur-md fixed top-0 z-50 ${
+      scrolled ? 'bg-lending-dark/90 border-lending-primary/20 shadow-lg' : 'bg-lending-dark/70 border-lending-border'
+    }`}>
       <div className="container mx-auto flex justify-between items-center">
         <div className="flex items-center">
           <div className="font-bold text-2xl">
@@ -66,9 +107,27 @@ const Navbar = () => {
         </div>
         
         <div className="hidden md:flex items-center space-x-6">
-          <a href="#features" className="text-gray-300 hover:text-lending-primary transition-colors duration-300">Features</a>
-          <a href="#networks" className="text-gray-300 hover:text-lending-primary transition-colors duration-300">Networks</a>
-          <a href="#how-it-works" className="text-gray-300 hover:text-lending-primary transition-colors duration-300">How It Works</a>
+          <button 
+            onClick={() => scrollToSection('features')} 
+            className="text-gray-300 hover:text-lending-primary transition-all duration-300 relative group"
+          >
+            Features
+            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-lending-primary transition-all duration-300 group-hover:w-full"></span>
+          </button>
+          <button 
+            onClick={() => scrollToSection('networks')} 
+            className="text-gray-300 hover:text-lending-primary transition-all duration-300 relative group"
+          >
+            Networks
+            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-lending-primary transition-all duration-300 group-hover:w-full"></span>
+          </button>
+          <button 
+            onClick={() => scrollToSection('how-it-works')} 
+            className="text-gray-300 hover:text-lending-primary transition-all duration-300 relative group"
+          >
+            How It Works
+            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-lending-primary transition-all duration-300 group-hover:w-full"></span>
+          </button>
         </div>
         
         <div className="flex items-center space-x-4">
@@ -117,29 +176,26 @@ const Navbar = () => {
       
       {/* Mobile Menu */}
       {isMenuOpen && (
-        <div className="md:hidden absolute left-0 right-0 top-[72px] bg-lending-dark/95 backdrop-blur-lg border-b border-lending-border animate-fade-in-up">
+        <div className="md:hidden absolute left-0 right-0 top-[72px] bg-lending-dark/95 backdrop-blur-lg border-b border-lending-border animate-slide-in-bottom">
           <div className="flex flex-col p-4 space-y-4">
-            <a 
-              href="#features" 
-              className="text-gray-300 hover:text-lending-primary transition-colors py-2 px-4"
-              onClick={toggleMenu}
+            <button 
+              onClick={() => scrollToSection('features')}
+              className="text-gray-300 hover:text-lending-primary transition-colors py-2 px-4 text-left"
             >
               Features
-            </a>
-            <a 
-              href="#networks" 
-              className="text-gray-300 hover:text-lending-primary transition-colors py-2 px-4"
-              onClick={toggleMenu}
+            </button>
+            <button 
+              onClick={() => scrollToSection('networks')}
+              className="text-gray-300 hover:text-lending-primary transition-colors py-2 px-4 text-left"
             >
               Networks
-            </a>
-            <a 
-              href="#how-it-works" 
-              className="text-gray-300 hover:text-lending-primary transition-colors py-2 px-4"
-              onClick={toggleMenu}
+            </button>
+            <button 
+              onClick={() => scrollToSection('how-it-works')}
+              className="text-gray-300 hover:text-lending-primary transition-colors py-2 px-4 text-left"
             >
               How It Works
-            </a>
+            </button>
           </div>
         </div>
       )}

@@ -8,7 +8,6 @@ import {
   X
 } from 'lucide-react';
 import { toast } from "@/hooks/use-toast";
-import ThemeToggle from './ThemeToggle';
 
 // Type definition for window with ethereum
 declare global {
@@ -96,7 +95,7 @@ const Navbar = () => {
 
   return (
     <nav className={`py-4 px-6 md:px-10 w-full border-b transition-all duration-300 backdrop-blur-md fixed top-0 z-50 ${
-      scrolled ? 'bg-background/90 border-primary/20 shadow-lg' : 'bg-background/70 border-border'
+      scrolled ? 'bg-lending-dark/90 border-lending-primary/20 shadow-lg' : 'bg-lending-dark/70 border-lending-border'
     }`}>
       <div className="container mx-auto flex justify-between items-center">
         <div className="flex items-center">
@@ -110,46 +109,44 @@ const Navbar = () => {
         <div className="hidden md:flex items-center space-x-6">
           <button 
             onClick={() => scrollToSection('features')} 
-            className="text-muted-foreground hover:text-primary transition-all duration-300 relative group"
+            className="text-gray-300 hover:text-lending-primary transition-all duration-300 relative group"
           >
-            Discover
+            Features
             <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-lending-primary transition-all duration-300 group-hover:w-full"></span>
           </button>
           <button 
             onClick={() => scrollToSection('networks')} 
-            className="text-muted-foreground hover:text-primary transition-all duration-300 relative group"
+            className="text-gray-300 hover:text-lending-primary transition-all duration-300 relative group"
           >
-            Ecosystems
+            Networks
             <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-lending-primary transition-all duration-300 group-hover:w-full"></span>
           </button>
           <button 
             onClick={() => scrollToSection('how-it-works')} 
-            className="text-muted-foreground hover:text-primary transition-all duration-300 relative group"
+            className="text-gray-300 hover:text-lending-primary transition-all duration-300 relative group"
           >
-            Process
+            How It Works
             <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-lending-primary transition-all duration-300 group-hover:w-full"></span>
           </button>
         </div>
         
         <div className="flex items-center space-x-4">
-          <ThemeToggle />
-          
           {isConnected ? (
             <Button 
               variant="outline" 
-              className="flex items-center gap-2 border-border bg-card hover:bg-primary/20 transition-all duration-300"
+              className="flex items-center gap-2 border-lending-border bg-lending-card hover:bg-lending-primary/20 transition-all duration-300"
             >
               <Wallet className="h-4 w-4 text-lending-primary" />
-              <span className="hidden sm:inline text-foreground">{truncateAddress(walletAddress)}</span>
+              <span className="hidden sm:inline text-white">{truncateAddress(walletAddress)}</span>
             </Button>
           ) : (
             <Button 
               variant="outline" 
-              className="flex items-center gap-2 border-border bg-card hover:bg-primary/20 transition-all duration-300"
+              className="flex items-center gap-2 border-lending-border bg-lending-card hover:bg-lending-primary/20 transition-all duration-300"
               onClick={connectWallet}
             >
               <Wallet className="h-4 w-4 text-lending-primary" />
-              <span className="hidden sm:inline text-foreground">Connect</span>
+              <span className="hidden sm:inline text-white">Connect Wallet</span>
             </Button>
           )}
           
@@ -168,7 +165,7 @@ const Navbar = () => {
           
           <Button 
             variant="ghost" 
-            className="md:hidden text-foreground hover:bg-primary/20" 
+            className="md:hidden text-white hover:bg-lending-primary/20" 
             size="icon"
             onClick={toggleMenu}
           >
@@ -179,25 +176,25 @@ const Navbar = () => {
       
       {/* Mobile Menu */}
       {isMenuOpen && (
-        <div className="md:hidden absolute left-0 right-0 top-[72px] bg-background/95 backdrop-blur-lg border-b border-border animate-slide-in-bottom">
+        <div className="md:hidden absolute left-0 right-0 top-[72px] bg-lending-dark/95 backdrop-blur-lg border-b border-lending-border animate-slide-in-bottom">
           <div className="flex flex-col p-4 space-y-4">
             <button 
               onClick={() => scrollToSection('features')}
-              className="text-muted-foreground hover:text-primary transition-colors py-2 px-4 text-left"
+              className="text-gray-300 hover:text-lending-primary transition-colors py-2 px-4 text-left"
             >
-              Discover
+              Features
             </button>
             <button 
               onClick={() => scrollToSection('networks')}
-              className="text-muted-foreground hover:text-primary transition-colors py-2 px-4 text-left"
+              className="text-gray-300 hover:text-lending-primary transition-colors py-2 px-4 text-left"
             >
-              Ecosystems
+              Networks
             </button>
             <button 
               onClick={() => scrollToSection('how-it-works')}
-              className="text-muted-foreground hover:text-primary transition-colors py-2 px-4 text-left"
+              className="text-gray-300 hover:text-lending-primary transition-colors py-2 px-4 text-left"
             >
-              Process
+              How It Works
             </button>
           </div>
         </div>

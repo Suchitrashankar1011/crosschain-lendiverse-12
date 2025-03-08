@@ -36,12 +36,19 @@
     --radius: 0.5rem;
 
     --sidebar-background: 0 0% 98%;
+
     --sidebar-foreground: 240 5.3% 26.1%;
+
     --sidebar-primary: 240 5.9% 10%;
+
     --sidebar-primary-foreground: 0 0% 98%;
+
     --sidebar-accent: 240 4.8% 95.9%;
+
     --sidebar-accent-foreground: 240 5.9% 10%;
+
     --sidebar-border: 220 13% 91%;
+
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
@@ -73,7 +80,6 @@
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
     --ring: 212.7 26.8% 83.9%;
-    
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
@@ -98,11 +104,6 @@
   html {
     scroll-behavior: smooth;
   }
-}
-
-/* Default to dark mode */
-html {
-  color-scheme: dark;
 }
 
 /* Animation classes */
@@ -131,114 +132,15 @@ html {
   width: 10px;
 }
 
-.dark ::-webkit-scrollbar-track {
+::-webkit-scrollbar-track {
   background: #0F172A;
 }
 
-.dark ::-webkit-scrollbar-thumb {
+::-webkit-scrollbar-thumb {
   background: #8B5CF680;
   border-radius: 10px;
 }
 
-.dark ::-webkit-scrollbar-thumb:hover {
+::-webkit-scrollbar-thumb:hover {
   background: #8B5CF6;
-}
-
-.light ::-webkit-scrollbar-track {
-  background: #f1f5f9;
-}
-
-.light ::-webkit-scrollbar-thumb {
-  background: #8B5CF640;
-  border-radius: 10px;
-}
-
-.light ::-webkit-scrollbar-thumb:hover {
-  background: #8B5CF6;
-}
-
-/* Common color variables for both light and dark modes */
-:root {
-  --lending-primary: #8B5CF6;
-  --lending-secondary: #0EA5E9;
-  --lending-accent: #10B981;
-}
-
-/* Light mode styles */
-.light {
-  --bg-lending-dark: #ffffff;
-  --text-white: #0F172A;
-  --border-lending-border: #e2e8f0;
-  --bg-lending-card: #f8fafc;
-  --bg-lending-darker: #f1f5f9;
-}
-
-/* Dark mode styles */
-.dark {
-  --bg-lending-dark: #0F172A;
-  --text-white: #ffffff;
-  --border-lending-border: #2D3748;
-  --bg-lending-card: #1E293B;
-  --bg-lending-darker: #0F172A;
-}
-
-/* Common styles for both modes */
-.text-adaptive {
-  @apply text-foreground;
-}
-
-/* Glass effect for both themes */
-.bg-glass {
-  @apply backdrop-blur-lg border rounded-xl;
-}
-
-.dark .bg-glass {
-  @apply bg-black/30 border-white/10;
-}
-
-.light .bg-glass {
-  @apply bg-white/70 border-black/5 shadow-md;
-}
-
-/* Animation utilities */
-.animate-fade-up {
-  animation: fadeUp 0.6s ease-out forwards;
-}
-
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.animate-fade-in {
-  animation: fadeIn 0.8s ease-out forwards;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-/* Enhanced card hover effects */
-.hover-lift {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.hover-lift:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-}
-
-.light .hover-lift:hover {
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.02);
 }

@@ -6,38 +6,39 @@ import {
   Shield, 
   Zap,
   Globe,
-  CreditCard
+  CreditCard,
+  Lock
 } from 'lucide-react';
 
 const features = [
   {
-    title: 'Seamless',
-    description: 'Cross-chain transfers with zero complexity',
+    title: 'Cross-Chain Interoperability',
+    description: 'Deposit collateral on one blockchain and borrow tokens on another without barriers.',
     icon: Link
   },
   {
-    title: 'Amplified',
-    description: 'Global liquidity at your fingertips',
+    title: 'Enhanced Liquidity',
+    description: 'Access global liquidity pools across multiple blockchain networks.',
     icon: BarChart3
   },
   {
-    title: 'Protected',
-    description: 'Enterprise-grade security by design',
+    title: 'Secure Protocol',
+    description: 'Advanced security measures ensure your assets remain protected across chains.',
     icon: Shield
   },
   {
-    title: 'Lightning',
-    description: 'Transactions finalized in seconds',
+    title: 'Fast Transactions',
+    description: 'Leverage high-throughput blockchains for faster and more efficient transactions.',
     icon: Zap
   },
   {
-    title: 'Borderless',
-    description: 'Unrestricted access to global markets',
+    title: 'Global Access',
+    description: 'Connect to lending markets worldwide without geographic restrictions.',
     icon: Globe
   },
   {
-    title: 'Optimized',
-    description: 'Maximum efficiency for your assets',
+    title: 'Capital Efficiency',
+    description: 'Optimize your assets by utilizing them across multiple networks simultaneously.',
     icon: CreditCard
   }
 ];
@@ -63,14 +64,17 @@ const Features = () => {
   }, []);
 
   return (
-    <div id="features" ref={sectionRef} className="py-20 min-h-screen flex items-center">
+    <div id="features" ref={sectionRef} className="py-20 bg-lending-dark min-h-screen flex items-center">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold mb-4 animate-fade-in-up">
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-[var(--lending-primary)] to-[var(--lending-secondary)] animate-bg-shift">Reimagine Finance</span>
+          <div className="inline-block px-3 py-1 rounded-full text-sm font-medium bg-lending-primary/20 text-lending-primary mb-4 animate-fade-in">
+            Features
+          </div>
+          <h2 className="text-4xl font-bold mb-4 text-white animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
+            Why Choose <span className="bg-clip-text text-transparent bg-gradient-to-r from-lending-primary to-lending-secondary animate-bg-shift">LenDiverse</span>?
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
-            Revolutionary platform bridging blockchain ecosystems
+          <p className="text-gray-300 max-w-2xl mx-auto animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
+            Our platform offers unique advantages for DeFi users looking to maximize their lending and borrowing capabilities.
           </p>
         </div>
         
@@ -78,14 +82,14 @@ const Features = () => {
           {features.map((feature, index) => (
             <div 
               key={index} 
-              className="feature-card bg-card hover-lift p-6 rounded-xl shadow-lg border border-border opacity-0 transform translate-y-10"
+              className="feature-card bg-lending-card p-6 rounded-xl shadow-lg hover:shadow-lending-primary/20 transition-all duration-500 border border-lending-border hover:border-lending-primary/50 opacity-0 transform translate-y-10"
               style={{ transitionDelay: `${index * 100}ms` }}
             >
-              <div className="inline-flex items-center justify-center p-3 bg-primary/10 text-primary rounded-lg mb-4 transition-all duration-300 group-hover:scale-110">
+              <div className="inline-flex items-center justify-center p-3 bg-lending-primary/10 text-lending-primary rounded-lg mb-4 transition-all duration-300 group-hover:scale-110">
                 <feature.icon className="h-6 w-6" />
               </div>
-              <h3 className="text-xl font-semibold mb-2 text-foreground">{feature.title}</h3>
-              <p className="text-muted-foreground">{feature.description}</p>
+              <h3 className="text-xl font-semibold mb-2 text-white">{feature.title}</h3>
+              <p className="text-gray-300">{feature.description}</p>
             </div>
           ))}
         </div>

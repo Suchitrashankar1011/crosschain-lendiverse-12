@@ -8,7 +8,6 @@ import HowItWorks from '@/components/HowItWorks';
 import CTA from '@/components/CTA';
 import Footer from '@/components/Footer';
 import { setupIntersectionObservers } from '@/lib/animation';
-import { ThemeProvider } from '@/contexts/ThemeContext';
 
 const Index = () => {
   useEffect(() => {
@@ -35,20 +34,18 @@ const Index = () => {
   }, []);
 
   return (
-    <ThemeProvider>
-      <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
+    <div className="min-h-screen bg-lending-dark text-white overflow-x-hidden">
+      <Navbar />
+      <main>
         <div className="fixed inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-lending-primary/10 via-transparent to-transparent z-[-1] opacity-70 pointer-events-none"></div>
-        <Navbar />
-        <main>
-          <Hero />
-          <Features />
-          <Networks />
-          <HowItWorks />
-          <CTA />
-        </main>
-        <Footer />
-      </div>
-    </ThemeProvider>
+        <Hero />
+        <Features />
+        <Networks />
+        <HowItWorks />
+        <CTA />
+      </main>
+      <Footer />
+    </div>
   );
 };
 

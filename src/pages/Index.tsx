@@ -8,6 +8,7 @@ import HowItWorks from '@/components/HowItWorks';
 import CTA from '@/components/CTA';
 import Footer from '@/components/Footer';
 import { setupIntersectionObservers } from '@/lib/animation';
+import { ThemeProvider } from '@/contexts/ThemeContext';
 
 const Index = () => {
   useEffect(() => {
@@ -34,18 +35,20 @@ const Index = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-lending-dark text-white overflow-x-hidden">
-      <Navbar />
-      <main>
-        <div className="fixed inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-lending-primary/10 via-transparent to-transparent z-[-1] opacity-70 pointer-events-none"></div>
-        <Hero />
-        <Features />
-        <Networks />
-        <HowItWorks />
-        <CTA />
-      </main>
-      <Footer />
-    </div>
+    <ThemeProvider>
+      <div className="min-h-screen bg-lending-dark text-white overflow-x-hidden dark:bg-lending-dark light:bg-white light:text-lending-dark">
+        <Navbar />
+        <main>
+          <div className="fixed inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-lending-primary/10 via-transparent to-transparent z-[-1] opacity-70 pointer-events-none dark:opacity-70 light:opacity-30"></div>
+          <Hero />
+          <Features />
+          <Networks />
+          <HowItWorks />
+          <CTA />
+        </main>
+        <Footer />
+      </div>
+    </ThemeProvider>
   );
 };
 

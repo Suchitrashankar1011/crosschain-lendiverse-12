@@ -61,3 +61,12 @@ export const scrollToSection = (id: string) => {
     });
   }
 };
+
+// Fix for the TypeScript error by using WheelEvent instead of Event
+const handleParallaxScroll = (e: WheelEvent) => {
+  const deltaY = e.deltaY;
+  const deltaX = e.deltaX;
+  return { deltaY, deltaX };
+};
+
+export { handleParallaxScroll };

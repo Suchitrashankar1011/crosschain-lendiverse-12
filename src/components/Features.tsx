@@ -64,16 +64,13 @@ const Features = () => {
   }, []);
 
   return (
-    <div id="features" ref={sectionRef} className="py-20 bg-lending-dark min-h-screen flex items-center">
+    <div id="features" ref={sectionRef} className="py-20 bg-lending-dark dark:bg-lending-dark light:bg-white min-h-screen flex items-center">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
-          <div className="inline-block px-3 py-1 rounded-full text-sm font-medium bg-lending-primary/20 text-lending-primary mb-4 animate-fade-in">
-            Features
-          </div>
-          <h2 className="text-4xl font-bold mb-4 text-white animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-            Why Choose <span className="bg-clip-text text-transparent bg-gradient-to-r from-lending-primary to-lending-secondary animate-bg-shift">LenDiverse</span>?
+          <h2 className="text-4xl font-bold mb-4 text-white dark:text-white light:text-lending-dark animate-fade-in-up">
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-lending-primary to-lending-secondary animate-bg-shift">LenDiverse</span>
           </h2>
-          <p className="text-gray-300 max-w-2xl mx-auto animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
+          <p className="text-gray-300 dark:text-gray-300 light:text-gray-600 max-w-2xl mx-auto animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
             Our platform offers unique advantages for DeFi users looking to maximize their lending and borrowing capabilities.
           </p>
         </div>
@@ -82,14 +79,14 @@ const Features = () => {
           {features.map((feature, index) => (
             <div 
               key={index} 
-              className="feature-card bg-lending-card p-6 rounded-xl shadow-lg hover:shadow-lending-primary/20 transition-all duration-500 border border-lending-border hover:border-lending-primary/50 opacity-0 transform translate-y-10"
+              className="feature-card bg-lending-card dark:bg-lending-card light:bg-white light:shadow-md p-6 rounded-xl shadow-lg hover:shadow-lending-primary/20 transition-all duration-500 border border-lending-border dark:border-lending-border light:border-gray-200 hover:border-lending-primary/50 opacity-0 transform translate-y-10"
               style={{ transitionDelay: `${index * 100}ms` }}
             >
               <div className="inline-flex items-center justify-center p-3 bg-lending-primary/10 text-lending-primary rounded-lg mb-4 transition-all duration-300 group-hover:scale-110">
                 <feature.icon className="h-6 w-6" />
               </div>
-              <h3 className="text-xl font-semibold mb-2 text-white">{feature.title}</h3>
-              <p className="text-gray-300">{feature.description}</p>
+              <h3 className="text-xl font-semibold mb-2 text-white dark:text-white light:text-lending-dark">{feature.title}</h3>
+              <p className="text-gray-300 dark:text-gray-300 light:text-gray-600">{feature.description}</p>
             </div>
           ))}
         </div>

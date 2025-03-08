@@ -12,11 +12,11 @@ export const ThemeToggle = () => {
       pressed={theme === 'light'} 
       onPressedChange={toggleTheme}
       aria-label="Toggle theme"
-      className="w-10 h-10 rounded-full bg-lending-card border-lending-border hover:bg-lending-primary/20 transition-all duration-300"
+      className="w-10 h-10 rounded-full bg-primary/10 border border-primary/20 hover:bg-primary/20 transition-all duration-300"
     >
       {theme === 'dark' ? 
-        <Sun className="h-4 w-4 text-lending-primary" /> : 
-        <Moon className="h-4 w-4 text-lending-primary" />
+        <Sun className="h-4 w-4 text-primary animate-pulse-slow" /> : 
+        <Moon className="h-4 w-4 text-primary animate-pulse-slow" />
       }
     </Toggle>
   );

@@ -16,18 +16,17 @@ const Hero = () => {
   };
 
   return (
-    <div className="pt-28 pb-16 md:pt-40 md:pb-32 bg-lending-darker dark:bg-lending-darker light:bg-white min-h-screen flex items-center">
+    <div className="pt-28 pb-16 md:pt-40 md:pb-32 min-h-screen flex items-center">
       <div className="container mx-auto px-6 flex flex-col md:flex-row items-center">
         <div className="flex flex-col space-y-6 md:w-1/2 md:pr-10 animate-fade-in-right">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
-            <span className="text-white dark:text-white light:text-lending-dark">Borrow & Lend</span><br />
+            <span className="text-foreground">Unlock</span><br />
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-lending-primary via-lending-secondary to-lending-accent animate-bg-shift">
-              Across Blockchains
+              Boundless Finance
             </span>
           </h1>
-          <p className="text-lg text-gray-300 dark:text-gray-300 light:text-gray-600 md:pr-10">
-            LenDiverse enables seamless lending and borrowing across multiple blockchain networks, 
-            enhancing DeFi liquidity and capital efficiency.
+          <p className="text-lg text-muted-foreground md:pr-10">
+            Break free from single-chain limitations. Connect, lend, and grow across all networks.
           </p>
           <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 pt-4">
             <Button 
@@ -44,32 +43,32 @@ const Hero = () => {
             </Button>
             <Button 
               variant="outline" 
-              className="flex items-center gap-2 px-6 py-6 border-lending-border bg-lending-dark/60 text-white dark:text-white light:text-lending-dark dark:bg-lending-dark/60 light:bg-white hover:bg-lending-primary/20 transition-all duration-300"
+              className="flex items-center gap-2 px-6 py-6 border-border bg-card/50 text-foreground hover:bg-primary/10 transition-all duration-300"
               onClick={scrollToFeatures}
             >
               <Coins className="h-4 w-4 text-lending-primary" />
-              Learn More
+              Discover
             </Button>
           </div>
         </div>
         <div className="hidden md:block md:w-1/2 mt-10 md:mt-0 animate-fade-in-up">
           <div className="relative rounded-lg overflow-hidden shadow-xl animate-float">
-            <div className="absolute inset-0 bg-hero-dark dark:bg-hero-dark light:bg-gradient-to-r light:from-slate-100 light:to-lending-primary/10 opacity-90"></div>
-            <div className="relative p-8 text-white dark:text-white light:text-lending-dark z-10">
+            <div className="absolute inset-0 bg-gradient-to-r from-lending-primary/20 to-lending-secondary/20 opacity-90"></div>
+            <div className="relative p-8 z-10">
               <div className="grid grid-cols-2 gap-4">
-                <div className="backdrop-blur-md p-4 rounded-lg border border-white/10 dark:bg-glass dark:border-white/10 light:bg-white light:border-gray-200 light:shadow-md hover:border-lending-primary/50 transition-all duration-300 hover:scale-105">
-                  <h3 className="font-semibold mb-1">Deposit on Optimism</h3>
-                  <p className="text-sm opacity-90">Secure 5.2% APY</p>
+                <div className="bg-glass p-4 rounded-lg hover-lift transition-all duration-300">
+                  <h3 className="font-semibold mb-1 text-foreground">Optimize</h3>
+                  <p className="text-sm text-muted-foreground">5.2% APY</p>
                 </div>
-                <div className="backdrop-blur-md p-4 rounded-lg border border-white/10 dark:bg-glass dark:border-white/10 light:bg-white light:border-gray-200 light:shadow-md hover:border-lending-primary/50 transition-all duration-300 hover:scale-105">
-                  <h3 className="font-semibold mb-1">Borrow on Base</h3>
-                  <p className="text-sm opacity-90">Only 3.1% Interest</p>
+                <div className="bg-glass p-4 rounded-lg hover-lift transition-all duration-300">
+                  <h3 className="font-semibold mb-1 text-foreground">Leverage</h3>
+                  <p className="text-sm text-muted-foreground">3.1% Interest</p>
                 </div>
-                <div className="backdrop-blur-md p-4 rounded-lg border border-white/10 dark:bg-glass dark:border-white/10 light:bg-white light:border-gray-200 light:shadow-md col-span-2 hover:border-lending-primary/50 transition-all duration-300 hover:scale-105">
+                <div className="bg-glass p-4 rounded-lg col-span-2 hover-lift transition-all duration-300">
                   <div className="flex justify-between items-center">
                     <div>
-                      <h3 className="font-semibold">Cross-Chain Transfer</h3>
-                      <p className="text-sm opacity-90">Optimism → Arbitrum</p>
+                      <h3 className="font-semibold text-foreground">Flow</h3>
+                      <p className="text-sm text-muted-foreground">Cross-Chain Transfer</p>
                     </div>
                     <div className="animate-pulse-slow bg-lending-accent rounded-full h-3 w-3"></div>
                   </div>

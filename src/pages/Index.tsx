@@ -36,10 +36,10 @@ const Index = () => {
 
   return (
     <ThemeProvider>
-      <div className="min-h-screen bg-lending-dark text-white overflow-x-hidden dark:bg-lending-dark light:bg-white light:text-lending-dark">
+      <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
+        <div className="fixed inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-lending-primary/10 via-transparent to-transparent z-[-1] opacity-70 pointer-events-none"></div>
         <Navbar />
         <main>
-          <div className="fixed inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-lending-primary/10 via-transparent to-transparent z-[-1] opacity-70 pointer-events-none dark:opacity-70 light:opacity-30"></div>
           <Hero />
           <Features />
           <Networks />

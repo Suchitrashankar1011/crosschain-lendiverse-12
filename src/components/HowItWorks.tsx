@@ -91,7 +91,7 @@ const HowItWorks = () => {
                 className="step-card backdrop-blur-md rounded-xl p-6 dark:border dark:border-white/10 dark:bg-lending-card/60 light:bg-white light:border-2 light:border-indigo-200 light:shadow-md h-full hover:border-indigo-400 transition-all duration-500 opacity-0 transform translate-y-10 hover:-translate-y-2"
                 style={{ transitionDelay: `${index * 150}ms` }}
               >
-                <div className={`inline-flex items-center justify-center p-3 dark:bg-white/10 light:bg-white light:${step.color} light:bg-opacity-10 rounded-lg mb-4 border light:border-indigo-200`}>
+                <div className={`inline-flex items-center justify-center p-3 dark:bg-white/10 light:bg-white light:border-2 light:border-indigo-300 rounded-lg mb-4`}>
                   <step.icon className="h-6 w-6 dark:text-white light:text-lending-primary" />
                 </div>
                 <div className="absolute -top-4 -left-4 w-8 h-8 bg-gradient-to-r from-indigo-500 to-blue-500 rounded-full flex items-center justify-center text-white font-bold z-10 shadow-md">

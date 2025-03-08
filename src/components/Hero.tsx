@@ -56,15 +56,15 @@ const Hero = () => {
             <div className="absolute inset-0 dark:bg-hero-dark light:bg-gradient-to-br light:from-white light:to-lending-primary/20 opacity-90 transition-colors duration-300"></div>
             <div className="relative p-8 z-10">
               <div className="grid grid-cols-2 gap-4">
-                <div className="dark:bg-glass light:bg-white/90 light:shadow-md p-4 rounded-lg dark:hover:border-lending-primary/50 light:hover:border-lending-primary/30 light:border light:border-gray-200 transition-all duration-300 hover:scale-105">
+                <div className="dark:bg-glass light:bg-white p-4 rounded-lg dark:hover:border-lending-primary/50 light:border-2 light:border-indigo-300 light:hover:border-indigo-500 transition-all duration-300 hover:scale-105 shadow-md">
                   <h3 className="font-semibold mb-1 dark:text-white light:text-gray-800">Deposit on Optimism</h3>
                   <p className="text-sm dark:text-gray-300 light:text-gray-600">Secure 5.2% APY</p>
                 </div>
-                <div className="dark:bg-glass light:bg-white/90 light:shadow-md p-4 rounded-lg dark:hover:border-lending-primary/50 light:hover:border-lending-primary/30 light:border light:border-gray-200 transition-all duration-300 hover:scale-105">
+                <div className="dark:bg-glass light:bg-white p-4 rounded-lg dark:hover:border-lending-primary/50 light:border-2 light:border-indigo-300 light:hover:border-indigo-500 transition-all duration-300 hover:scale-105 shadow-md">
                   <h3 className="font-semibold mb-1 dark:text-white light:text-gray-800">Borrow on Base</h3>
                   <p className="text-sm dark:text-gray-300 light:text-gray-600">Only 3.1% Interest</p>
                 </div>
-                <div className="dark:bg-glass light:bg-white/90 light:shadow-md p-4 rounded-lg col-span-2 dark:hover:border-lending-primary/50 light:hover:border-lending-primary/30 light:border light:border-gray-200 transition-all duration-300 hover:scale-105">
+                <div className="dark:bg-glass light:bg-white p-4 rounded-lg col-span-2 dark:hover:border-lending-primary/50 light:border-2 light:border-indigo-300 light:hover:border-indigo-500 transition-all duration-300 hover:scale-105 shadow-md">
                   <div className="flex justify-between items-center">
                     <div>
                       <h3 className="font-semibold dark:text-white light:text-gray-800">Cross-Chain Transfer</h3>

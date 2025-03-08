@@ -131,7 +131,7 @@ const Features = () => {
                 style={{ transitionDelay: `${index * 100}ms` }}
               >
                 <CardContent className="p-6">
-                  <div className={`inline-flex items-center justify-center p-4 rounded-full mb-5 bg-gradient-to-br dark:from-lending-primary/20 dark:to-lending-primary/10 light:${colorClasses.bg} light:border light:${colorClasses.border}`}>
+                  <div className={`inline-flex items-center justify-center p-4 rounded-full mb-5 bg-gradient-to-br dark:from-lending-primary/20 dark:to-lending-primary/10 light:bg-white light:border-2 light:${colorClasses.border}`}>
                     <feature.icon className={`h-7 w-7 dark:text-lending-primary light:${colorClasses.icon}`} />
                   </div>
                   <h3 className="text-xl font-semibold mb-3 dark:text-white light:text-gray-800">{feature.title}</h3>
@@ -150,15 +150,15 @@ const Features = () => {
                 LenDiverse eliminates traditional barriers between blockchains, creating a unified liquidity ecosystem where your assets work harder for you across multiple networks simultaneously.
               </p>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
-                <div className="bg-gradient-to-br dark:from-lending-primary/20 dark:to-transparent light:from-blue-100 light:to-blue-50 p-4 rounded-lg border dark:border-lending-border/50 light:border-blue-300 transition-all duration-300 hover:border-blue-400 hover:-translate-y-1">
+                <div className="bg-gradient-to-br dark:from-lending-primary/20 dark:to-transparent light:from-white light:to-white p-4 rounded-lg border-2 dark:border-lending-border/50 light:border-blue-300 transition-all duration-300 hover:border-blue-400 hover:-translate-y-1 shadow-sm">
                   <h4 className="font-semibold dark:text-white light:text-gray-800">Unified Liquidity</h4>
                   <p className="text-sm dark:text-gray-300 light:text-gray-600">Pooled assets across chains</p>
                 </div>
-                <div className="bg-gradient-to-br dark:from-lending-secondary/20 dark:to-transparent light:from-purple-100 light:to-purple-50 p-4 rounded-lg border dark:border-lending-border/50 light:border-purple-300 transition-all duration-300 hover:border-purple-400 hover:-translate-y-1">
+                <div className="bg-gradient-to-br dark:from-lending-secondary/20 dark:to-transparent light:from-white light:to-white p-4 rounded-lg border-2 dark:border-lending-border/50 light:border-purple-300 transition-all duration-300 hover:border-purple-400 hover:-translate-y-1 shadow-sm">
                   <h4 className="font-semibold dark:text-white light:text-gray-800">Interest Optimization</h4>
                   <p className="text-sm dark:text-gray-300 light:text-gray-600">Best rates automatically</p>
                 </div>
-                <div className="bg-gradient-to-br dark:from-lending-accent/20 dark:to-transparent light:from-green-100 light:to-green-50 p-4 rounded-lg border dark:border-lending-border/50 light:border-green-300 transition-all duration-300 hover:border-green-400 hover:-translate-y-1">
+                <div className="bg-gradient-to-br dark:from-lending-accent/20 dark:to-transparent light:from-white light:to-white p-4 rounded-lg border-2 dark:border-lending-border/50 light:border-green-300 transition-all duration-300 hover:border-green-400 hover:-translate-y-1 shadow-sm">
                   <h4 className="font-semibold dark:text-white light:text-gray-800">Risk Diversification</h4>
                   <p className="text-sm dark:text-gray-300 light:text-gray-600">Spread across networks</p>
                 </div>

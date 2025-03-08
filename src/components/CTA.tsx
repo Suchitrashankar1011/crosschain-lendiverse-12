@@ -28,7 +28,7 @@ const CTA = () => {
   }, []);
 
   return (
-    <div className="py-20 mb-16 dark:bg-lending-darker light:bg-gray-100 transition-colors duration-300" ref={sectionRef}>
+    <div className="py-20 mb-24 dark:bg-lending-darker light:bg-gray-100 transition-colors duration-300" ref={sectionRef}>
       <div className="container mx-auto px-4">
         <div className="cta-card opacity-0 transform translate-y-10 transition-all duration-700 rounded-xl overflow-hidden shadow-lg border-2 dark:border-lending-border light:border-indigo-400">
           <div className="grid grid-cols-1 md:grid-cols-2">
@@ -51,9 +51,9 @@ const CTA = () => {
                 <ArrowRight className="h-4 w-4" />
               </Button>
             </div>
-            <div className="bg-gradient-to-r dark:from-lending-primary dark:to-lending-accent light:from-indigo-500 light:to-blue-500 hidden md:block relative overflow-hidden shadow-inner">
+            <div className="bg-gradient-to-r from-lending-primary to-lending-accent hidden md:flex relative overflow-hidden shadow-inner">
               <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMTAwIDEwMGMwLTUwIDUwLTUwIDUwIDBzLTUwIDUwLTUwIDB6IiBmaWxsPSJyZ2JhKDI1NSwgMjU1LCAyNTUsIDAuMSkiIGZpbGwtcnVsZT0iZXZlbm9kZCIvPjwvc3ZnPg==')] opacity-20 animate-bg-shift"></div>
-              <div className="h-full p-8 flex items-center justify-center relative z-10">
+              <div className="h-full p-8 w-full flex items-center justify-center relative z-10">
                 <div className="text-white w-full">
                   <h3 className="text-xl font-bold mb-3 animate-fade-in" style={{ animationDelay: '0.3s' }}>Currently Supporting</h3>
                   <div className="grid grid-cols-3 gap-3 text-center">

@@ -1,14 +1,14 @@
-
 import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
+import { useNavigate } from 'react-router-dom';
 import { 
   Wallet, 
   LogIn, 
   Menu, 
   X
 } from 'lucide-react';
-import { toast } from "@/hooks/use-toast";
 import ThemeToggle from './ThemeToggle';
+import { useAuth } from '@/contexts/AuthContext';
 
 // Type definition for window with ethereum
 declare global {
@@ -19,9 +19,9 @@ declare global {
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isConnected, setIsConnected] = useState(false);
-  const [walletAddress, setWalletAddress] = useState('');
   const [scrolled, setScrolled] = useState(false);
+  const navigate = useNavigate();
+  const { isAuthenticated, walletAddress, login, logout } = useAuth();
 
   // Handle scroll event to change navbar appearance
   useEffect(() => {
@@ -42,50 +42,20 @@ const Navbar = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  const connectWallet = async () => {
-    try {
-      // Check if MetaMask is installed
-      if (window.ethereum) {
-        // Request account access
-        const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
-        const account = accounts[0];
-        
-        setWalletAddress(account);
-        setIsConnected(true);
-        
-        toast({
-          title: "Wallet Connected",
-          description: `Connected to ${account.slice(0, 6)}...${account.slice(-4)}`,
-        });
-      } else {
-        toast({
-          title: "MetaMask Not Found",
-          description: "Please install MetaMask to connect your wallet.",
-          variant: "destructive"
-        });
-      }
-    } catch (error) {
-      console.error("Error connecting to wallet:", error);
-      toast({
-        title: "Connection Failed",
-        description: "Failed to connect to your wallet.",
-        variant: "destructive"
-      });
-    }
+  const handleLogin = async () => {
+    await login();
   };
 
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      // Close menu if open
-      if (isMenuOpen) {
-        setIsMenuOpen(false);
-      }
-      
-      // Scroll to section with smooth behavior
-      window.scrollTo({
-        top: element.offsetTop - 80, // Account for navbar height
-        behavior: 'smooth'
+  const handleLogout = () => {
+    logout();
+  };
+
+  const handleDashboardClick = () => {
+    if (isAuthenticated) {
+      navigate('/dashboard');
+    } else {
+      handleLogin().then(() => {
+        navigate('/dashboard');
       });
     }
   };
@@ -136,37 +106,45 @@ const Navbar = () => {
         <div className="flex items-center space-x-4">
           <ThemeToggle />
           
-          {isConnected ? (
+          {isAuthenticated ? (
             <Button 
               variant="outline" 
               className="flex items-center gap-2 dark:border-lending-border dark:bg-lending-card light:bg-white/90 light:border-gray-200 hover:bg-lending-primary/20 transition-all duration-300"
+              onClick={handleDashboardClick}
             >
               <Wallet className="h-4 w-4 text-lending-primary" />
-              <span className="hidden sm:inline dark:text-white light:text-gray-800">{truncateAddress(walletAddress)}</span>
+              <span className="hidden sm:inline dark:text-white light:text-gray-800">
+                {walletAddress ? truncateAddress(walletAddress) : 'Wallet'}
+              </span>
             </Button>
           ) : (
             <Button 
               variant="outline" 
               className="flex items-center gap-2 dark:border-lending-border dark:bg-lending-card light:bg-white/90 light:border-gray-200 hover:bg-lending-primary/20 transition-all duration-300"
-              onClick={connectWallet}
+              onClick={handleLogin}
             >
               <Wallet className="h-4 w-4 text-lending-primary" />
               <span className="hidden sm:inline dark:text-white light:text-gray-800">Connect</span>
             </Button>
           )}
           
-          <Button 
-            className="bg-gradient-to-r from-lending-primary to-lending-secondary hover:opacity-90 transition-all duration-300 text-white flex items-center gap-2"
-            onClick={() => {
-              toast({
-                title: "Welcome to LenDiverse",
-                description: "Login functionality is coming soon!",
-              });
-            }}
-          >
-            <LogIn className="h-4 w-4" />
-            <span className="hidden sm:inline">Login</span>
-          </Button>
+          {isAuthenticated ? (
+            <Button 
+              className="bg-gradient-to-r from-lending-primary to-lending-secondary hover:opacity-90 transition-all duration-300 text-white flex items-center gap-2"
+              onClick={handleLogout}
+            >
+              <LogIn className="h-4 w-4" />
+              <span className="hidden sm:inline">Logout</span>
+            </Button>
+          ) : (
+            <Button 
+              className="bg-gradient-to-r from-lending-primary to-lending-secondary hover:opacity-90 transition-all duration-300 text-white flex items-center gap-2"
+              onClick={handleDashboardClick}
+            >
+              <LogIn className="h-4 w-4" />
+              <span className="hidden sm:inline">Login</span>
+            </Button>
+          )}
           
           <Button 
             variant="ghost" 
@@ -206,6 +184,16 @@ const Navbar = () => {
       )}
     </nav>
   );
+};
+
+const scrollToSection = (id: string) => {
+  const element = document.getElementById(id);
+  if (element) {
+    window.scrollTo({
+      top: element.offsetTop - 80,
+      behavior: 'smooth'
+    });
+  }
 };
 
 export default Navbar;

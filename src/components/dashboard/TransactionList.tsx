@@ -4,9 +4,12 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/com
 import { ArrowDownLeft, ArrowUpRight, RefreshCw, ArrowRight } from 'lucide-react';
 import { useTransactionStore } from '@/stores/transactionStore';
 import { formatDistanceToNow } from 'date-fns';
+import { Button } from '@/components/ui/button';
+import { useNavigate } from 'react-router-dom';
 
 const TransactionList = () => {
   const { transactions } = useTransactionStore();
+  const navigate = useNavigate();
 
   // Helper function to get the correct icon
   const getTransactionIcon = (type: string) => {
@@ -75,6 +78,13 @@ const TransactionList = () => {
     return new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime();
   });
 
+  // Limit to only the 5 most recent transactions
+  const recentTransactions = sortedTransactions.slice(0, 5);
+
+  const viewAllTransactions = () => {
+    navigate('/history');
+  };
+
   return (
     <Card className="border dark:border-lending-border light:border-gray-200 dark:bg-lending-card light:bg-white">
       <CardHeader className="pb-3">
@@ -87,28 +97,42 @@ const TransactionList = () => {
             No transactions yet. Start by depositing, withdrawing, borrowing or lending.
           </div>
         ) : (
-          <div className="space-y-5">
-            {sortedTransactions.map((tx) => (
-              <div key={tx.id} className="flex items-center justify-between">
-                <div className="flex items-center">
-                  <div className={`w-10 h-10 rounded-full flex items-center justify-center mr-3 ${getTransactionBackground(tx.type)}`}>
-                    {getTransactionIcon(tx.type)}
+          <>
+            <div className="space-y-5">
+              {recentTransactions.map((tx) => (
+                <div key={tx.id} className="flex items-center justify-between">
+                  <div className="flex items-center">
+                    <div className={`w-10 h-10 rounded-full flex items-center justify-center mr-3 ${getTransactionBackground(tx.type)}`}>
+                      {getTransactionIcon(tx.type)}
+                    </div>
+                    <div>
+                      <p className="font-medium dark:text-white light:text-gray-900">
+                        {getTransactionDescription(tx.type, tx.network)}
+                      </p>
+                      <p className="text-sm dark:text-gray-400 light:text-gray-500">
+                        {tx.timestamp ? formatDistanceToNow(new Date(tx.timestamp), { addSuffix: true }) : tx.timeAgo}
+                      </p>
+                    </div>
                   </div>
-                  <div>
-                    <p className="font-medium dark:text-white light:text-gray-900">
-                      {getTransactionDescription(tx.type, tx.network)}
-                    </p>
-                    <p className="text-sm dark:text-gray-400 light:text-gray-500">
-                      {tx.timestamp ? formatDistanceToNow(new Date(tx.timestamp), { addSuffix: true }) : tx.timeAgo}
-                    </p>
+                  <div className={`font-medium ${getTransactionTextColor(tx.type)}`}>
+                    {tx.amount} ETH
                   </div>
                 </div>
-                <div className={`font-medium ${getTransactionTextColor(tx.type)}`}>
-                  {tx.amount} ETH
-                </div>
+              ))}
+            </div>
+            
+            {sortedTransactions.length > 5 && (
+              <div className="mt-6 flex justify-center">
+                <Button 
+                  variant="outline" 
+                  onClick={viewAllTransactions}
+                  className="w-full"
+                >
+                  View All Transactions
+                </Button>
               </div>
-            ))}
-          </div>
+            )}
+          </>
         )}
       </CardContent>
     </Card>

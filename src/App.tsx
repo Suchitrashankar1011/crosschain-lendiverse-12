@@ -10,6 +10,7 @@ import NotFound from "./pages/NotFound";
 import Dashboard from "./pages/Dashboard";
 import Wallet from "./pages/Wallet";
 import PoolDetail from "./pages/PoolDetail";
+import History from "./pages/History";
 
 const queryClient = new QueryClient();
 
@@ -25,9 +26,9 @@ const App = () => (
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/wallet" element={<Wallet />} />
             <Route path="/pool/:id" element={<PoolDetail />} />
+            <Route path="/history" element={<History />} />
             {/* Adding additional routes for other dashboard sections */}
             <Route path="/markets" element={<Dashboard />} />
-            <Route path="/history" element={<Dashboard />} />
             <Route path="/settings" element={<Dashboard />} />
             <Route path="/help" element={<Dashboard />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

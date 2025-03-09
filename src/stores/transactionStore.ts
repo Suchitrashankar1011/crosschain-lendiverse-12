@@ -19,25 +19,8 @@ interface TransactionStore {
   clearTransactions: () => void;
 }
 
-// Initial transaction data
-const initialTransactions: Transaction[] = [
-  {
-    id: 'tx1',
-    type: 'deposit',
-    network: 'Base',
-    amount: '+0.25',
-    timeAgo: '2 hours ago',
-    timestamp: new Date(Date.now() - 2 * 60 * 60 * 1000).toISOString(),
-  },
-  {
-    id: 'tx2',
-    type: 'withdraw',
-    network: 'Arbitrum',
-    amount: '-0.1',
-    timeAgo: '1 day ago',
-    timestamp: new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString(),
-  }
-];
+// Initial transaction data - empty by default as requested by the user
+const initialTransactions: Transaction[] = [];
 
 export const useTransactionStore = create<TransactionStore>()(
   persist(

@@ -9,6 +9,7 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import Dashboard from "./pages/Dashboard";
 import Wallet from "./pages/Wallet";
+import PoolDetail from "./pages/PoolDetail";
 
 const queryClient = new QueryClient();
 
@@ -23,6 +24,7 @@ const App = () => (
             <Route path="/" element={<Index />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/wallet" element={<Wallet />} />
+            <Route path="/pool/:id" element={<PoolDetail />} />
             {/* Adding additional routes for other dashboard sections */}
             <Route path="/markets" element={<Dashboard />} />
             <Route path="/history" element={<Dashboard />} />

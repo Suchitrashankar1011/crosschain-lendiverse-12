@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '@/contexts/AuthContext';
 import DashboardSidebar from '@/components/dashboard/DashboardSidebar';
@@ -8,11 +8,13 @@ import OverviewChart from '@/components/dashboard/OverviewChart';
 import LendingPoolsTable from '@/components/dashboard/LendingPoolsTable';
 import TransactionList from '@/components/dashboard/TransactionList';
 import NetworkSelector from '@/components/dashboard/NetworkSelector';
+import DepositWithdrawForm from '@/components/dashboard/DepositWithdrawForm';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
 const Dashboard = () => {
   const { isAuthenticated, userBalance } = useAuth();
   const navigate = useNavigate();
+  const [showDepositForm, setShowDepositForm] = useState(false);
   
   // Redirect to login if not authenticated
   React.useEffect(() => {
@@ -46,20 +48,29 @@ const Dashboard = () => {
               title="Total Balance" 
               value={`${userBalance} ETH`}
               subtext="+0.1% from last month"
+              onClick={() => setShowDepositForm(!showDepositForm)}
             />
             <BalanceCard 
               title="Supplied" 
               value="0.85 ETH"
               subtext="Earning 5.2% APY"
               variant="success"
+              onClick={() => navigate('/wallet')}
             />
             <BalanceCard 
               title="Available to Withdraw" 
               value="0.384 ETH"
               subtext="Across all networks"
               variant="info"
+              onClick={() => navigate('/wallet')}
             />
           </div>
+          
+          {showDepositForm && (
+            <div className="mb-8">
+              <DepositWithdrawForm />
+            </div>
+          )}
           
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
             <Card className="lg:col-span-3 border dark:border-lending-border light:border-gray-200 dark:bg-lending-card light:bg-white">

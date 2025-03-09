@@ -1,19 +1,22 @@
 
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { cn } from '@/lib/utils';
 
 interface BalanceCardProps {
   title: string;
   value: string;
   subtext?: string;
-  variant?: 'default' | 'success' | 'info';
+  variant?: 'default' | 'success' | 'info' | 'warning';
+  onClick?: () => void;
 }
 
 const BalanceCard: React.FC<BalanceCardProps> = ({
   title,
   value,
   subtext,
-  variant = 'default'
+  variant = 'default',
+  onClick
 }) => {
   const getBgColor = () => {
     switch (variant) {
@@ -21,6 +24,8 @@ const BalanceCard: React.FC<BalanceCardProps> = ({
         return 'dark:bg-green-900/10 light:bg-green-50';
       case 'info':
         return 'dark:bg-blue-900/10 light:bg-blue-50';
+      case 'warning':
+        return 'dark:bg-amber-900/10 light:bg-amber-50';
       default:
         return '';
     }
@@ -32,13 +37,21 @@ const BalanceCard: React.FC<BalanceCardProps> = ({
         return 'text-green-500';
       case 'info':
         return 'text-blue-500';
+      case 'warning':
+        return 'text-amber-500';
       default:
         return '';
     }
   };
 
   return (
-    <Card className={`border dark:border-lending-border light:border-gray-200 dark:bg-lending-card light:bg-white shadow-sm ${getBgColor()}`}>
+    <Card 
+      className={cn(
+        `border dark:border-lending-border light:border-gray-200 dark:bg-lending-card light:bg-white shadow-sm ${getBgColor()}`,
+        onClick && 'cursor-pointer hover:shadow-md transition-shadow duration-200'
+      )}
+      onClick={onClick}
+    >
       <CardHeader className="pb-2">
         <CardTitle className="text-sm font-medium dark:text-gray-400 light:text-gray-500">{title}</CardTitle>
       </CardHeader>

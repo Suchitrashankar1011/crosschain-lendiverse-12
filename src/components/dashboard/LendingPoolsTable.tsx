@@ -1,7 +1,9 @@
 
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
+import { useTransactionStore } from '@/stores/transactionStore';
 
 const pools = [
   {
@@ -34,6 +36,14 @@ const pools = [
 ];
 
 const LendingPoolsTable = () => {
+  const navigate = useNavigate();
+  
+  const handleViewPool = (pool: typeof pools[0]) => {
+    navigate(`/pool/${pool.id}`, { 
+      state: { pool }
+    });
+  };
+
   return (
     <Card className="border dark:border-lending-border light:border-gray-200 dark:bg-lending-card light:bg-white">
       <CardHeader className="pb-3">
@@ -80,8 +90,14 @@ const LendingPoolsTable = () => {
                       <span className="text-sm dark:text-gray-400 light:text-gray-500">{pool.utilization}%</span>
                     </div>
                   </td>
-                  <td className="py-4 px-4 text-right">
-                    <Button variant="outline" className="text-sm">View</Button>
+                  <td className="py-4 px-4 text-right space-x-2">
+                    <Button 
+                      size="sm" 
+                      variant="outline" 
+                      onClick={() => handleViewPool(pool)}
+                    >
+                      View
+                    </Button>
                   </td>
                 </tr>
               ))}
